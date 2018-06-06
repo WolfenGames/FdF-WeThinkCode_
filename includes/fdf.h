@@ -6,7 +6,7 @@
 /*   By: jwolf <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/06 09:50:00 by jwolf             #+#    #+#             */
-/*   Updated: 2018/06/06 16:51:04 by jwolf            ###   ########.fr       */
+/*   Updated: 2018/06/06 17:36:08 by jwolf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ typedef struct		s_scale
 }					t_scale;
 typedef struct		s_map
 {
-	char			**map;
+	char			*map;
 	t_point			*points;
 	t_pos			pos;
 	t_zoom			*zoom;
@@ -83,6 +83,7 @@ void				*DrawWindow(t_win *win);
 void				*LoadMap(char *file, t_map *map);
 void				*DrawMap(t_win *win);
 
+void				draw_debug(t_win *win, t_map *map);
 void				HandleInput(t_win *win, t_map *map);
 
 int					handleExit(int keycode);

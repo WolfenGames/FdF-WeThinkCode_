@@ -6,7 +6,7 @@
 #    By: jwolf <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/06/06 10:11:48 by jwolf             #+#    #+#              #
-#    Updated: 2018/06/06 14:31:04 by jwolf            ###   ########.fr        #
+#    Updated: 2018/06/06 17:30:50 by jwolf            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ SRC = srcs/
 
 SOURCES = $(SRC)main.c $(SRC)drawWindow.c $(SRC)KeyHandle.c \
 		  $(SRC)handleInput.c $(SRC)loadMap.c $(SRC)drawMap.c \
-		  $(SRC)newMap.c
+		  $(SRC)newMap.c $(SRC)debug.c
 
 OBJECTS = $(SOURCES:.c=.o)
 
