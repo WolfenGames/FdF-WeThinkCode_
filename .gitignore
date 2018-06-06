@@ -1,3 +1,5 @@
 *.o
 /srcs/*.o
 fdf
+*.swap
+/srcs/*.swp
