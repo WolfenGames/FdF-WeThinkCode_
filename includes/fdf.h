@@ -6,14 +6,14 @@
 /*   By: jwolf <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/06 09:50:00 by jwolf             #+#    #+#             */
-/*   Updated: 2018/06/06 12:19:58 by jwolf            ###   ########.fr       */
+/*   Updated: 2018/06/06 15:21:49 by jwolf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FDF_H
 # define FDF_H
-# define MAX_W 1080
-# define MAX_H 1920
+# define MAX_W 1920
+# define MAX_H 1080
 # define DEF_W 1600 
 # define DEF_H 900
 
@@ -34,6 +34,10 @@
 # define NUM_2			84
 # define NUM_4			86
 # define NUM_6			88
+
+# define BLUE 			0x0000ff
+# define GREEN			0x00ff00
+# define RED			0xff0000
 
 # include <mlx.h>
 # include <math.h>
@@ -67,11 +71,23 @@ typedef struct		s_map
 	void			*mlx;
 	char			**map;
 	t_point			*points;
-	t_pos			pos;
-	t_zoom			zoom;
-	t_scale			scale;
+	t_pos			*pos;
+	t_zoom			*zoom;
+	t_scale			*scale;
 }					t_map;
 
-void	*DrawWindow(void *mlx, void *window, char *title);
+void				*DrawWindow(t_map *map);
+void				*LoadMap(char *file, t_map *map);
+void				*DrawMap(t_map *map);
+
+void				HandleInput(t_map *param);
+
+int					handleExit(int keycode);
+int					moveCamera(int keycode, t_map *map);
+int					rotCamera(int keycode, t_map *map);
+int					scaleMap(int keycode, t_map *map);
+int					zoomMap(int keycode, t_map *map);
+
+t_map				*newMap(t_map *map);
 
 #endif

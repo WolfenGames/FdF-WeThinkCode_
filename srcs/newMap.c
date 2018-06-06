@@ -1,20 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   drawWindow.c                                       :+:      :+:    :+:   */
+/*   newMap.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jwolf <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/06/06 11:12:50 by jwolf             #+#    #+#             */
-/*   Updated: 2018/06/06 15:23:06 by jwolf            ###   ########.fr       */
+/*   Created: 2018/06/06 14:07:44 by jwolf             #+#    #+#             */
+/*   Updated: 2018/06/06 15:21:41 by jwolf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
 
-void	*DrawWindow(t_map *map)
+t_map	*newMap(t_map *map)
 {
-	map->mlx = mlx_init();
-	map->window = mlx_new_window(map->mlx, DEF_W, DEF_H, "FDF");
-	return (map);	
+	t_point		*point;
+	t_pos		*pos;
+
+	point = ft_memalloc(sizeof(t_point));
+	pos	= ft_memalloc(sizeof(t_pos));
+	map->pos = pos;
+	map->points = point;
+	return (map);
 }

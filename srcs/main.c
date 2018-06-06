@@ -6,45 +6,27 @@
 /*   By: jwolf <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/06 10:11:05 by jwolf             #+#    #+#             */
-/*   Updated: 2018/06/06 12:22:26 by jwolf            ###   ########.fr       */
+/*   Updated: 2018/06/06 14:57:59 by jwolf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
 #include <stdio.h>
 
-int		keyCheck(int keycode, void *param)
+int		main(int ac, char **argv)
 {
 	t_map	*map;
 
-	map = (t_map *)param;
-	if (keycode == ESC)
+	if(!(map = ft_memalloc(sizeof(map))))
+		return (1);
+	map = newMap(map);
+	if (ac == 2)
 	{
-		mlx_clear_window(map->mlx, map->window);
-		mlx_destroy_window(map->mlx, map->window);
+		LoadMap(argv[1], map);
 	}
-	return (0);
-}
-
-int		test()
-{
-	ft_putendl("Weirdo");
-	return (1);
-}
-
-int		main(void)
-{
-	t_map	*map;
-
-	map = ft_memalloc(sizeof(map));
-	map->window = NULL;
-	map->mlx = NULL;
-	if (!(map->window = DrawWindow(map->mlx, map->window, "FDF")))
-		return (0);
-	if (map->mlx)
-	{
-		mlx_key_hook(map->window, keyCheck, (void*)&map);
-		mlx_loop(map->window);
-	}
+	DrawWindow(map);
+	HandleInput(map);
+	DrawMap(map);
+	mlx_loop(map->mlx);
 	return (0);
 }
