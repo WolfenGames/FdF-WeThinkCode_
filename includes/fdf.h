@@ -6,7 +6,7 @@
 /*   By: jwolf <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/06 09:50:00 by jwolf             #+#    #+#             */
-/*   Updated: 2018/06/06 10:09:14 by jwolf            ###   ########.fr       */
+/*   Updated: 2018/06/06 10:14:19 by jwolf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 
 # include <mlx.h>
 # include <math.h>
+# include "../libft/includes/libft.h"
 
 typedef struct		s_point
 {
