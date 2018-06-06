@@ -6,7 +6,7 @@
 /*   By: jwolf <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/06 09:50:00 by jwolf             #+#    #+#             */
-/*   Updated: 2018/06/06 12:10:12 by jwolf            ###   ########.fr       */
+/*   Updated: 2018/06/06 12:19:58 by jwolf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 # define FDF_H
 # define MAX_W 1080
 # define MAX_H 1920
-# define DEF_W 100 
-# define DEF_H 100
+# define DEF_W 1600 
+# define DEF_H 900
 
 # define A 				0
 # define S 				1

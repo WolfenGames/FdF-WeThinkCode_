@@ -6,7 +6,7 @@
 /*   By: jwolf <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/06 10:11:05 by jwolf             #+#    #+#             */
-/*   Updated: 2018/06/06 12:17:03 by jwolf            ###   ########.fr       */
+/*   Updated: 2018/06/06 12:22:26 by jwolf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,6 @@ int		keyCheck(int keycode, void *param)
 	{
 		mlx_clear_window(map->mlx, map->window);
 		mlx_destroy_window(map->mlx, map->window);
-	}
-	if (keycode == A)
-	{
-		map->window = DrawWindow(map->mlx, map->window, "FDF2"); 
 	}
 	return (0);
 }
@@ -45,7 +41,10 @@ int		main(void)
 	map->mlx = NULL;
 	if (!(map->window = DrawWindow(map->mlx, map->window, "FDF")))
 		return (0);
-	mlx_key_hook(map->window, keyCheck, (void*)&map);
-	mlx_loop(map->window);
+	if (map->mlx)
+	{
+		mlx_key_hook(map->window, keyCheck, (void*)&map);
+		mlx_loop(map->window);
+	}
 	return (0);
 }
