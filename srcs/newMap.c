@@ -6,7 +6,7 @@
 /*   By: jwolf <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/06 14:07:44 by jwolf             #+#    #+#             */
-/*   Updated: 2018/06/06 15:24:56 by jwolf            ###   ########.fr       */
+/*   Updated: 2018/06/06 15:31:20 by jwolf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,5 +21,7 @@ t_map	*newMap(t_map *map)
 	pos	= ft_memalloc(sizeof(t_pos));
 	map->pos = pos;
 	map->points = point;
+	free(point);
+	free(pos);
 	return (map);
 }

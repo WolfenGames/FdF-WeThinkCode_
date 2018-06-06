@@ -6,7 +6,7 @@
 /*   By: jwolf <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/06 13:41:30 by jwolf             #+#    #+#             */
-/*   Updated: 2018/06/06 15:19:13 by jwolf            ###   ########.fr       */
+/*   Updated: 2018/06/06 15:30:48 by jwolf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ void	*LoadMap(char *file, t_map *map)
 	fd = open(file, O_RDONLY);
 	while (get_next_line(fd, line))
 	{
-		map->map = line;
 		ft_putendl("Loading");
 	}
 	close(fd);

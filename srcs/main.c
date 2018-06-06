@@ -6,7 +6,7 @@
 /*   By: jwolf <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/06 10:11:05 by jwolf             #+#    #+#             */
-/*   Updated: 2018/06/06 14:57:59 by jwolf            ###   ########.fr       */
+/*   Updated: 2018/06/06 15:33:55 by jwolf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,10 @@ int		main(int ac, char **argv)
 	if (ac == 2)
 	{
 		LoadMap(argv[1], map);
+		DrawWindow(map);
+		HandleInput(map);
+		DrawMap(map);
+		mlx_loop(map->mlx);
 	}
-	DrawWindow(map);
-	HandleInput(map);
-	DrawMap(map);
-	mlx_loop(map->mlx);
 	return (0);
 }
