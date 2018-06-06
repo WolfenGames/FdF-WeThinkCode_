@@ -6,7 +6,7 @@
 /*   By: jwolf <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/06 12:39:27 by jwolf             #+#    #+#             */
-/*   Updated: 2018/06/06 13:34:47 by jwolf            ###   ########.fr       */
+/*   Updated: 2018/06/06 16:42:35 by jwolf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static int		getKeys(int keycode, void *params)
 	return (0);
 }
 
-void	HandleInput(t_map *map)
+void	HandleInput(t_win *win, t_map *map)
 {
-	mlx_key_hook(map->window, getKeys, (void *)&map);
+	mlx_key_hook(win->window, getKeys, (void *)&map);
 }
