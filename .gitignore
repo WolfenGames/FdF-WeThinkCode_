@@ -1,5 +1,6 @@
 *.o
 /srcs/*.o
 fdf
-*.swap
+*.swp
+/maps/*.swp
 /srcs/*.swp
