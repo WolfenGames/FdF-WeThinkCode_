@@ -6,7 +6,7 @@
 /*   By: jwolf <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/07 08:18:29 by jwolf             #+#    #+#             */
-/*   Updated: 2018/06/07 14:15:34 by jwolf            ###   ########.fr       */
+/*   Updated: 2018/06/07 15:42:04 by jwolf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	plotpoints(t_map *map, int xx, int yy)
 	x = -holdx;
 	y = -holdy;
 	mlx_string_put(map->mlx, map->window, 10, 10, C_RED, "FDF - IS KAK");
-	if(!(map->width == 1 && map->height == 1))
+	if((map->width >= 1 && map->height >= 1))
 	{
 		mlx_string_put(map->mlx, map->window, 10, 40,
 			C_GREEN, ft_itoa(map->scale));

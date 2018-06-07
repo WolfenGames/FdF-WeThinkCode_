@@ -6,7 +6,7 @@
 /*   By: jwolf <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/07 07:36:11 by jwolf             #+#    #+#             */
-/*   Updated: 2018/06/07 15:29:34 by jwolf            ###   ########.fr       */
+/*   Updated: 2018/06/07 15:38:17 by jwolf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,13 +73,13 @@ t_map			readmap(char *filename)
 		file.map[i++] = line;
 	}
 	close(fd);
-	if (allLinesEqual(file))
-		ft_putendl("Equal");
-	else
+	if (!allLinesEqual(file))
 	{
 		ft_putendl("File is invalid");
 		exit(-1);
 	}
+	file.scale = 5;
+	file.width = (int)ft_strlen(file.map[0]);
 	return (file);
 }
 
