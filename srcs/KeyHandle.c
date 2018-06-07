@@ -6,7 +6,7 @@
 /*   By: jwolf <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/07 08:35:12 by jwolf             #+#    #+#             */
-/*   Updated: 2018/06/07 11:34:30 by jwolf            ###   ########.fr       */
+/*   Updated: 2018/06/07 13:53:55 by jwolf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,6 @@ int		keyhook(int keycode, t_map *map)
 	map->map_x += get_displacement_x(keycode) * map->scale;
 	map->map_y += get_displacement_y(keycode) * map->scale;
 	map->scale += get_scale(keycode, map);
-	draw_map(*map);
+	draw_map(map);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: jwolf <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/06 09:50:00 by jwolf             #+#    #+#             */
-/*   Updated: 2018/06/07 11:34:25 by jwolf            ###   ########.fr       */
+/*   Updated: 2018/06/07 14:21:58 by jwolf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,34 +51,29 @@ typedef struct		s_points
 	int				x;
 	int				y;
 	int				z;
-	int				color;
 }					t_points;
 typedef struct		s_map
 {
 	void			*window;
 	void			*mlx;
 	t_points		**points;
+	char			**map;
+	int				map_y;
+	int				map_x;
 	int				width;
 	int				height;
-	int				angle_x;
-	int				angle_y;
-	int				angle_z;
-	int				orig_x;
-	int				orig_y;
-	int				orig_z;
-	int				map_x;
-	int				map_y;
-	int				map_z;
 	int				scale;
 }					t_map;
 
-void				draw_map(t_map map);
-void				map_init(t_map map);
+void				draw_map(t_map *map);
+
+void				map_init(t_map *map);
 void				plotpoints(t_map *map, int xx, int yy);
-int					colors(t_map *map);
 
 int					keyhook(int keycode, t_map *map);
 
+t_map				loadMap(int ac, char **argv, t_map *map);
 t_map				get_map(t_map *map);
+t_map				loadFile(int fd, t_map *map);
 
 #endif

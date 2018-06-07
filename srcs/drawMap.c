@@ -6,7 +6,7 @@
 /*   By: jwolf <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/07 08:18:29 by jwolf             #+#    #+#             */
-/*   Updated: 2018/06/07 11:34:27 by jwolf            ###   ########.fr       */
+/*   Updated: 2018/06/07 14:15:34 by jwolf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,17 +26,22 @@ void	plotpoints(t_map *map, int xx, int yy)
 	x = -holdx;
 	y = -holdy;
 	mlx_string_put(map->mlx, map->window, 10, 10, C_RED, "FDF - IS KAK");
-	mlx_string_put(map->mlx, map->window, 10, 40,
-			C_GREEN, ft_itoa(map->scale));
-	while (x < holdx)
+	if(!(map->width == 1 && map->height == 1))
 	{
-		while (y < holdy)
+		mlx_string_put(map->mlx, map->window, 10, 40,
+			C_GREEN, ft_itoa(map->scale));
+		while (x < holdx)
 		{
-			mlx_pixel_put(map->mlx, map->window, (DEF_W / 2) + xx + x,
-					(DEF_H / 2) + yy + y, C_GREEN);
-			y += scale;
+			while (y < holdy)
+			{
+				mlx_pixel_put(map->mlx, map->window, (DEF_W / 2) + xx + x,
+						(DEF_H / 2) + yy + y, C_GREEN);
+				y += scale;
+			}
+			y = -holdy;
+			x += scale;
 		}
-		y = -holdy;
-		x += scale;
 	}
+	else
+		mlx_string_put(map->mlx, map->window, 30, 30, C_BLUE, "FEED ME MAPS!!");
 }
