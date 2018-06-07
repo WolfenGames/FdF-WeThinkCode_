@@ -1,64 +1,51 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   KeyHandle.c                                        :+:      :+:    :+:   */
+/*   keyHandle.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jwolf <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/06/06 12:34:39 by jwolf             #+#    #+#             */
-/*   Updated: 2018/06/06 16:47:55 by jwolf            ###   ########.fr       */
+/*   Created: 2018/06/07 08:35:12 by jwolf             #+#    #+#             */
+/*   Updated: 2018/06/07 11:34:30 by jwolf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
 
-static void		printdata(int keycode)
+static int	get_displacement_x(int keycode)
 {
-		ft_putendl(ft_itoa(keycode));
+	if (keycode == ARROW_LEFT)
+		return (-1);
+	if (keycode == ARROW_RIGHT)
+		return (1);
+	return (0); 
 }
 
-int		handleExit(int keycode)
+static int	get_displacement_y(int keycode)
+{
+	if (keycode == ARROW_UP)
+		return (-1);
+	if (keycode == ARROW_DOWN)
+		return (1);
+	return (0);
+}
+
+static	int	get_scale(int keycode, t_map *map)
+{
+	if (keycode == PG_DOWN && map->scale >= 2)
+		return (-1);
+	if (keycode == PG_UP && map->scale < MAX_SCALE)
+		return (1);
+	return (0);
+}
+
+int		keyhook(int keycode, t_map *map)
 {
 	if (keycode == ESC)
-	{
 		exit(0);
-	}
-	return (0);
-}
-
-int		moveCamera(int keycode, t_map *map)
-{
-	if (!map)
-		return (0);
-	if (keycode == A || keycode == S || keycode == D || keycode == W)
-		printdata(keycode);
-	return (0);
-}
-
-int		rotCamera(int keycode, t_map *map)
-{
-	if (!map)
-		return (0);
-	if (keycode == UP_ARROW || keycode == DOWN_ARROW
-			|| keycode == LEFT_ARROW || keycode == RIGHT_ARROW)
-		printdata(keycode);
-	return (0);
-}
-
-int		scaleMap(int keycode, t_map *map)
-{
-	if (!map)
-		return (0);
-	if (keycode == PG_UP || keycode == PG_DOWN)
-		printdata(keycode);
-	return (0);
-}
-
-int		zoomMap(int keycode, t_map *map)
-{
-	if (!map)
-		return (0);
-	if (keycode == NUM_PLUS || keycode == NUM_MINUS)
-		printdata(keycode);
+	map->map_x += get_displacement_x(keycode) * map->scale;
+	map->map_y += get_displacement_y(keycode) * map->scale;
+	map->scale += get_scale(keycode, map);
+	draw_map(*map);
 	return (0);
 }

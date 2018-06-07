@@ -1,23 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   loadfile.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jwolf <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/06/07 07:29:14 by jwolf             #+#    #+#             */
-/*   Updated: 2018/06/07 09:20:17 by jwolf            ###   ########.fr       */
+/*   Created: 2018/06/07 07:36:11 by jwolf             #+#    #+#             */
+/*   Updated: 2018/06/07 11:21:20 by jwolf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
 
-int		main(void)
+t_map	get_map(t_map *map)
 {
-	t_map		map;
-
-	map = get_map(&map);
-	map_init(map);
-
-	return (0);
+	map->map_x = 0;
+	map->map_y = 0;
+	map->scale = 1;
+	map->width = 20;
+	map->height = 20;
+	if (!map)
+		ft_putendl("FUCKED");
+	return (*map);
 }

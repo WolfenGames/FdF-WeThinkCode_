@@ -6,7 +6,7 @@
 /*   By: jwolf <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/06 09:50:00 by jwolf             #+#    #+#             */
-/*   Updated: 2018/06/07 11:34:25 by jwolf            ###   ########.fr       */
+/*   Updated: 2018/06/06 17:36:08 by jwolf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,10 @@
 # define S 				1
 # define D 				2
 # define W 				13
-# define ARROW_UP 		126
-# define ARROW_DOWN		125
-# define ARROW_RIGHT	124
-# define ARROW_LEFT 	123 
+# define UP_ARROW 		126
+# define DOWN_ARROW		125
+# define RIGHT_ARROW	124
+# define LEFT_ARROW  	123 
 # define PG_UP 			116
 # define PG_DOWN		121
 # define ESC			53
@@ -35,50 +35,63 @@
 # define NUM_4			86
 # define NUM_6			88
 
-# define DEF_ANGLE			45
-# define MAX_SCALE		50
-
-# define C_BLUE			0x0000ff
-# define C_GREEN		0x00ff00
-# define C_RED			0xff0000
+# define BLUE 			0x0000ff
+# define GREEN			0x00ff00
+# define RED			0xff0000
 
 # include <mlx.h>
 # include <math.h>
 # include "../libft/includes/libft.h"
 
-typedef struct		s_points
+typedef struct		s_point
 {
 	int				x;
 	int				y;
 	int				z;
-	int				color;
-}					t_points;
+	void			*color;
+}					t_point;
+typedef struct		s_pos
+{
+	int				x;
+	int				y;
+}					t_pos;
+typedef struct		s_zoom
+{
+	int				x_zoom;
+	int				y_zoom;
+}					t_zoom;
+typedef struct		s_scale
+{
+	int				x_scale;
+	int				y_scale;
+}					t_scale;
 typedef struct		s_map
 {
-	void			*window;
-	void			*mlx;
-	t_points		**points;
-	int				width;
-	int				height;
-	int				angle_x;
-	int				angle_y;
-	int				angle_z;
-	int				orig_x;
-	int				orig_y;
-	int				orig_z;
-	int				map_x;
-	int				map_y;
-	int				map_z;
-	int				scale;
+	char			*map;
+	t_point			*points;
+	t_pos			pos;
+	t_zoom			*zoom;
+	t_scale			*scale;
 }					t_map;
+typedef struct		s_win
+{
+	void	*window;
+	void	*mlx;
+}					t_win;
 
-void				draw_map(t_map map);
-void				map_init(t_map map);
-void				plotpoints(t_map *map, int xx, int yy);
-int					colors(t_map *map);
+void				*DrawWindow(t_win *win);
+void				*LoadMap(char *file, t_map *map);
+void				*DrawMap(t_win *win);
 
-int					keyhook(int keycode, t_map *map);
+void				draw_debug(t_win *win, t_map *map);
+void				HandleInput(t_win *win, t_map *map);
 
-t_map				get_map(t_map *map);
+int					handleExit(int keycode);
+int					moveCamera(int keycode, t_map *map);
+int					rotCamera(int keycode, t_map *map);
+int					scaleMap(int keycode, t_map *map);
+int					zoomMap(int keycode, t_map *map);
+
+t_map				*newMap(t_map *map);
 
 #endif
