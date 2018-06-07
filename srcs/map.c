@@ -40,7 +40,7 @@ void	centre(t_map *map)
 void	draw_map(t_map *map)
 {
 	mlx_clear_window(map->mlx, map->window);
-	centre(map);
+//	ntre(map);
 	display(*map);
 }
 

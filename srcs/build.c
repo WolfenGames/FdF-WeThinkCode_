@@ -41,7 +41,8 @@ void		mapify(t_map *map, t_points ***poofy)
 	char		**strsplit;
 
 	i = 0;
-	map->width = count(map->map[i]);
+//	map->width = count(map->map[i]);
+	map->width = (int)ft_strlen(map->map[0]);
 	new = (t_points **)malloc(sizeof(t_points *) * map->height);
 	while (i < map->height)
 	{
@@ -50,7 +51,8 @@ void		mapify(t_map *map, t_points ***poofy)
 		strsplit = ft_strsplit(map->map[i], ' ');
 		while (l < map->width)
 		{
-			new[i][l] = new_point(i, ft_atoi(strsplit[i]), l);
+//			new[i][l] = new_point(i, ft_atoi(map->map[i]), l);
+			new[i][l] = new_point(i, ft_atoi(strsplit[l]), l);
 			l++;
 		}
 		free(strsplit);
@@ -81,7 +83,7 @@ t_points	**simulacron(t_map *map)
 	return (hold);
 }
 
-void	deletePoints(t_map map)
+void	freePoints(t_map map)
 {
 	long int	i;
 

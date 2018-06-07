@@ -14,5 +14,5 @@
 
 int		ft_intminmax(int i)
 {
-	return ((i >= MIN_INT && i <= MAX_INT));
+	return ((i > MIN_INT && i <= MAX_INT));
 }

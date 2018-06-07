@@ -45,7 +45,12 @@
 # define C_GREEN		0x00ff00
 # define C_RED			0xff0000
 
+#ifdef __APPLE___
 # include <mlx.h>
+#elif __linux__
+#include "minilibx/mlx.h"
+#endif
+
 # include <math.h>
 # include "../libft/includes/libft.h"
 
