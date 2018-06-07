@@ -6,7 +6,7 @@
 #    By: jwolf <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/06/06 10:11:48 by jwolf             #+#    #+#              #
-#    Updated: 2018/06/07 14:21:56 by jwolf            ###   ########.fr        #
+#    Updated: 2018/06/07 16:39:08 by jwolf            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ C = gcc
 SRC = srcs/
 
 SOURCES = $(SRC)main.c $(SRC)map.c $(SRC)loadfile.c $(SRC)drawmap.c \
-		 $(SRC)keyHandle.c 
+		 $(SRC)keyHandle.c $(SRC)points.c $(SRC)build.c 
 
 OBJECTS = $(SOURCES:.c=.o)
 

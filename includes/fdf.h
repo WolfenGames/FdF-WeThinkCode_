@@ -6,7 +6,7 @@
 /*   By: jwolf <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/06 09:50:00 by jwolf             #+#    #+#             */
-/*   Updated: 2018/06/07 15:41:58 by jwolf            ###   ########.fr       */
+/*   Updated: 2018/06/07 17:51:58 by jwolf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,11 @@
 # define NUM_4			86
 # define NUM_6			88
 
-# define DEF_ANGLE			45
+# define DEF_ANGLE		45
 # define MAX_SCALE		50
+
+# define CONDITION2		fabs((double)(p1.x - p2.x))
+# define CONDITION3		fabs((double)(p2.z - p2.z))
 
 # define C_BLUE			0x0000ff
 # define C_GREEN		0x00ff00
@@ -60,17 +63,22 @@ typedef struct		s_map
 	char			**map;
 	int				map_y;
 	int				map_x;
+	int				map_z;
 	int				width;
 	int				height;
 	int				scale;
 }					t_map;
 
 void				draw_map(t_map *map);
-
+void				display(t_map map);
+void				incHeight(t_map *map, int scalex, int scaley);
 void				map_init(t_map *map);
-void				plotpoints(t_map *map, int xx, int yy);
+void				mapify(t_map *map, t_points ***poofy);
+void				translate(t_map *map);
 
 int					keyhook(int keycode, t_map *map);
+
+t_points			new_point(int x, int y, int z);
 
 t_map				loadMap(int ac, char **argv, t_map *map);
 t_map				get_map(t_map *map);

@@ -6,42 +6,65 @@
 /*   By: jwolf <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/07 08:18:29 by jwolf             #+#    #+#             */
-/*   Updated: 2018/06/07 15:42:04 by jwolf            ###   ########.fr       */
+/*   Updated: 2018/06/07 17:51:29 by jwolf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
 
-void	plotpoints(t_map *map, int xx, int yy)
+void	printpixel(t_map map, int x, int y)
 {
-	int	 	x;
-	int		y;
-	int		holdx;
-	int		holdy;
-	int		scale;
-	
-	scale = map->scale;
-	holdx = (map->width * scale) / 2;
-	holdy = (map->height * scale) / 2;
-	x = -holdx;
-	y = -holdy;
-	mlx_string_put(map->mlx, map->window, 10, 10, C_RED, "FDF - IS KAK");
-	if((map->width >= 1 && map->height >= 1))
+	mlx_pixel_put(map.mlx, map.window, x, y, C_GREEN);
+}
+void	debug_strings(t_map map)
+{
+	mlx_string_put(map.mlx, map.window, 10, 10, C_GREEN,
+			ft_strjoin("Pixels :: ", ft_itoa(map.height * map.width)));
+	mlx_string_put(map.mlx, map.window, 10, 30, C_GREEN, 
+			ft_strjoin("Scale  :: ", ft_itoa(map.scale)));
+	mlx_string_put(map.mlx, map.window, 10, 50, C_GREEN,
+			ft_strjoin("Pos X  :: ", ft_itoa(map.map_x)));
+	mlx_string_put(map.mlx, map.window, 10, 70, C_GREEN,
+			ft_strjoin("Pos Y  :: ", ft_itoa(map.map_y)));
+}
+
+void	line(t_points p1, t_points p2, t_map *map)
+{
+	float		steps;
+	float		i;
+	int			col;
+	t_points 	sum;
+
+	i = 0;
+	col = C_GREEN;
+	steps = (float)pow((fmax(CONDITION2, CONDITION3)), - 1);
+	while (i <= 1)
 	{
-		mlx_string_put(map->mlx, map->window, 10, 40,
-			C_GREEN, ft_itoa(map->scale));
-		while (x < holdx)
-		{
-			while (y < holdy)
-			{
-				mlx_pixel_put(map->mlx, map->window, (DEF_W / 2) + xx + x,
-						(DEF_H / 2) + yy + y, C_GREEN);
-				y += scale;
-			}
-			y = -holdy;
-			x += scale;
-		}
+		sum.x = p1.x + i * (p2.x - p1.x);
+		sum.z = p1.x + i * (p2.z - p2.z);
+		mlx_pixel_put(map->mlx, map->window, sum.x, sum.z, col);
+		i += steps;
 	}
-	else
-		mlx_string_put(map->mlx, map->window, 30, 30, C_BLUE, "FEED ME MAPS!!");
+}
+
+void	display(t_map map)
+{
+	int		i;
+	int		j;
+
+	i = 0;
+	debug_strings(map);
+	while (i < map.height)
+	{
+		j = 0;
+		while (j < map.width)
+		{
+			if (i + 1 < map.height)
+				line(map.points[i][j], map.points[i + 1][j], &map);
+			if (j + 1 < map.width)
+				line(map.points[i][j], map.points[i][j + 1], &map);
+			j++;
+		}
+		i++;
+	}
 }

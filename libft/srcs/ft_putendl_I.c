@@ -1,35 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_putendl_I.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jwolf <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/06/07 07:29:14 by jwolf             #+#    #+#             */
-/*   Updated: 2018/06/07 17:54:01 by jwolf            ###   ########.fr       */
+/*   Created: 2018/06/07 17:06:07 by jwolf             #+#    #+#             */
+/*   Updated: 2018/06/07 17:09:26 by jwolf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/fdf.h"
+#include "../includes/libft.h"
 
-t_map			mapini(t_map *map)
+void	ft_putendl_I(char *str, int	a)
 {
-	map->height = 1;
-	map->width = 1;
-	map->scale = 10;
-	map->map_x = 0;
-	map->map_y = 0;
-	map->map_z = 0;
-	return (*map);
-}
-
-int				main(int ac, char **argv)
-{
-	t_map		map;
-
-	map = mapini(&map);
-	map = loadMap(ac, argv, &map);
-	mapify(&map, &map.points);
-	map_init(&map);
-	return (0);
+	ft_putendl(ft_strjoin(str, ft_itoa(a)));
 }
