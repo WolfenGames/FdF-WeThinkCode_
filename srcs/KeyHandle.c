@@ -39,21 +39,14 @@ static	int	get_scale(int keycode, t_map *map)
 	return (0);
 }
 
-void	escape(void)
-{
-	ft_putendl("Thank you for playing Jumanji Beta version... early beta");
-	exit(0);
-}
-
 int		keyhook(int keycode, t_map *map)
 {
 	if (keycode == ESC)
 		escape();
+	window_new(keycode, map);
 	map->map_x += get_displacement_x(keycode) * map->scale;
 	map->map_z	+= get_displacement_y(keycode) * map->scale;
-	//translate(map);
 	map->scale += get_scale(keycode, map);
 	draw_map(map);
-	//freePoints(mapcpy);
 	return (0);
 }

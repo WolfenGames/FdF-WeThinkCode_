@@ -20,7 +20,6 @@ static int		count(char *str)
 	i = 0;
 	c = 0;
 	while (str[i] != '\0')
-	{
 		if (ft_isdigit(str[i]))
 		{
 			c++;
@@ -29,7 +28,6 @@ static int		count(char *str)
 		}
 		else
 			i++;
-	}
 	return (c);
 }
 

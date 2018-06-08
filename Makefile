@@ -6,7 +6,7 @@
 #    By: jwolf <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/06/06 10:11:48 by jwolf             #+#    #+#              #
-#    Updated: 2018/06/08 08:31:00 by jwolf            ###   ########.fr        #
+#    Updated: 2018/06/08 13:02:42 by jwolf            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,8 @@ C = gcc
 SRC = srcs/
 
 SOURCES = $(SRC)main.c $(SRC)map.c $(SRC)loadfile.c $(SRC)drawmap.c \
-		 $(SRC)keyHandle.c $(SRC)points.c $(SRC)build.c 
+		 $(SRC)keyHandle.c $(SRC)points.c $(SRC)build.c \
+		 $(SRC)windowcontrol.c
 
 OBJECTS = $(SOURCES:.c=.o)
 
@@ -53,6 +54,7 @@ re: fclean clean all
 	@echo "\033[1;31;m[Recompiled]\033[0m"
 
 run: re
+	make clean
 	./$(NAME) $(FILE)
 
 .PHONY: fclean clean all re

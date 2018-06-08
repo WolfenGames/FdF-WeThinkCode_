@@ -20,8 +20,8 @@ t_points		new_point(int x, int y, int z)
 	new_point.y = y;
 	new_point.z = z;
 	if (y > 1)
-		new_point.col = C_GREEN;
-	else
 		new_point.col = C_RED;
+	else
+		new_point.col = C_GREEN;
 	return (new_point);
 }
