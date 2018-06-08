@@ -6,7 +6,7 @@
 /*   By: jwolf <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/07 08:18:29 by jwolf             #+#    #+#             */
-/*   Updated: 2018/06/08 11:35:37 by jwolf            ###   ########.fr       */
+/*   Updated: 2018/06/08 12:15:19 by jwolf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,7 @@ void	debug_strings(t_map map)
 	mlx_string_put(map.mlx, map.window, 10, 70, C_GREEN,
 			ft_strjoin("Pos Y  :: ", ft_itoa(map.map_y)));
 	mlx_string_put(map.mlx, map.window, 10, 90, C_GREEN,
-			ft_strjoin("Pos Z  :: ", ft_itoa(map.map_z)));
-	mlx_string_put(map.mlx, map.window, 10, 110, C_RED,
+
 			ft_strjoin("Map H  :: ", ft_itoa(map.height)));
 	mlx_string_put(map.mlx, map.window, 10, 130, C_RED,
 			ft_strjoin("Map W  :: ", ft_itoa(map.width)));
@@ -39,14 +38,16 @@ void	line(t_points p1, t_points p2, t_map *map)
 
 	i = 0;
 	col = C_GREEN;
-	steps = (float)pow((fmax(CONDITION2, CONDITION3)), -1);
+	steps = (float)pow((fmax(
+					fabs((double)(p1.x - p2.x)),
+					fabs((double)(p1.z - p2.z)))), -1);
 	while (i <= 1)
 	{
 		sum.x = p1.x + i * (p2.x - p1.x);
-		sum.z = p1.z + i * (p2.z - p2.z);
+		sum.z = p1.z + i * (p2.z - p1.z);
 		mlx_pixel_put(map->mlx, map->window,
 				(DEF_W / 2) + map->map_x + sum.x * map->scale, 
-				(DEF_H / 2) + map->map_y + sum.z * map->scale
+				(DEF_H / 2) + map->map_z + sum.z * map->scale
 				, p1.col);
 		i += steps;
 	}
@@ -59,18 +60,17 @@ void	display(t_map map)
 
 	i = 0;
 	debug_strings(map);
-	ft_putendl("Begin Drawing Map");
-	while (i < map.width)
+	while (i < map.height)
 	{
 		j = 0;
-		while (j < map.height)
+		while (j < map.width)
 		{
-/*		if (j + 1 < map.height)
-				line(map.points[i][j], map.points[i][j + 1], &map);
-		if (i + 1 < map.width)
+		if (i + 1 < map.height)
 				line(map.points[i][j], map.points[i + 1][j], &map);
+		if (j + 1 < map.width)
+				line(map.points[i][j], map.points[i][j + 1], &map);
 			//line(map.points[i][j], map.points[i][j], &map);
-			mlx_pixel_put(map.mlx, map.window,
+/*			mlx_pixel_put(map.mlx, map.window,
 					(DEF_W / 2) + map.map_x + map.points[i][j].x * map.scale,
 					(DEF_H / 2) + map.map_y + map.points[i][j].y * map.scale,
 				   	C_RED);

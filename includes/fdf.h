@@ -6,7 +6,7 @@
 /*   By: jwolf <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/06 09:50:00 by jwolf             #+#    #+#             */
-/*   Updated: 2018/06/08 11:15:43 by jwolf            ###   ########.fr       */
+/*   Updated: 2018/06/08 12:08:55 by jwolf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,6 @@
 
 # define DEF_ANGLE		45
 # define MAX_SCALE		50
-
-# define CONDITION2		fabs((double)(p1.x - p2.x))
-# define CONDITION3		fabs((double)(p2.z - p2.z))
 
 # define C_BLUE			0x0000ff
 # define C_GREEN		0x00ff00

@@ -6,7 +6,7 @@
 /*   By: jwolf <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/07 08:35:12 by jwolf             #+#    #+#             */
-/*   Updated: 2018/06/08 11:19:53 by jwolf            ###   ########.fr       */
+/*   Updated: 2018/06/08 11:58:57 by jwolf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int		keyhook(int keycode, t_map *map)
 	if (keycode == ESC)
 		escape();
 	map->map_x += get_displacement_x(keycode) * map->scale;
-	map->map_y += get_displacement_y(keycode) * map->scale;
+	map->map_z	+= get_displacement_y(keycode) * map->scale;
 	//translate(map);
 	map->scale += get_scale(keycode, map);
 	draw_map(map);

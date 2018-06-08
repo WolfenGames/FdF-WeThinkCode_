@@ -6,7 +6,7 @@
 /*   By: jwolf <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/07 16:19:49 by jwolf             #+#    #+#             */
-/*   Updated: 2018/06/08 11:32:08 by jwolf            ###   ########.fr       */
+/*   Updated: 2018/06/08 12:08:10 by jwolf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void		mapify(t_map *map, t_points ***poofy)
 		strsplit = ft_strsplit(map->map[i], ' ');
 		while (l < map->width)
 		{
-			new[i][l] = new_point(i, ft_atoi(strsplit[i]), l);
+			new[i][l] = new_point(i, ft_atoi(strsplit[l]), l);
 			l++;
 		}
 		free(strsplit);
