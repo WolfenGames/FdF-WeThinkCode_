@@ -12,6 +12,8 @@
 
 NAME = fdf
 
+FILE = maps/42.fdf
+
 CFLAGS += -Wextra -Wall -I./includes/
 
 ATTACH = -L libft/ -lft -lmlx -framework OpenGL -framework AppKit
@@ -49,5 +51,8 @@ fclean: clean
 
 re: fclean clean all
 	@echo "\033[1;31;m[Recompiled]\033[0m"
+
+run: re
+	./$(NAME) $(FILE)
 
 .PHONY: fclean clean all re
