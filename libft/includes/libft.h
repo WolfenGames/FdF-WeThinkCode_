@@ -6,7 +6,7 @@
 /*   By: jwolf <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/08 15:44:03 by jwolf             #+#    #+#             */
-/*   Updated: 2018/06/08 07:23:08 by jwolf            ###   ########.fr       */
+/*   Updated: 2018/06/08 09:44:54 by jwolf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@
 # define EVEN(x)		(!(x % 2))
 # define IS_SPACE(x)    (x == ' ' || x == '\t' || x== '\n')
 # define ABS(x)			((x < 0) ? x : -x)
-# define BUFF_SIZE		32
+# define BUFF_SIZE		32		
 # define FD_MAX			100
 
 # include <string.h>

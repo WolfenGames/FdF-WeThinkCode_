@@ -6,7 +6,7 @@
 /*   By: jwolf <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/07 07:36:11 by jwolf             #+#    #+#             */
-/*   Updated: 2018/06/08 07:53:06 by jwolf            ###   ########.fr       */
+/*   Updated: 2018/06/08 11:31:32 by jwolf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static int		getlc(char	*filename)
 	return (lines);
 }
 
-int			allLinesEqual(t_map map)
+int			allLinesEqual(t_map map, int curr)
 {
 	int		i;
 	int		j;
@@ -43,7 +43,7 @@ int			allLinesEqual(t_map map)
 	i = 0;
 	j = 0;
 	l = ft_strlen(map.map[0]);
-	while (map.map[i] && i < map.height)
+	while (map.map[i] && i < curr)
 	{
 		j = ((int)ft_strlen(map.map[i]) == l) ? 1 : 0;
 		if (j == 0)
@@ -51,6 +51,15 @@ int			allLinesEqual(t_map map)
 		i++;
 	}
 	return (j);
+}
+
+void			exitreadmap(t_map file, int cur)
+{
+	if (!allLinesEqual(file, cur))
+	{
+		ft_putendl("File is invalid");
+		exit(-1);
+	}
 }
 
 t_map			readmap(char *filename)
@@ -61,28 +70,23 @@ t_map			readmap(char *filename)
 	t_map	file;
 
 	i = 0;
-	file.height = 0;
 	ft_putendl_C("Opening file :: ", filename);
 	if (!(fd = open(filename, O_RDONLY)))
-	{
 		ft_putendl("Hmmm... Retard you are");
-	}
 	ft_putendl_C("Opened file :: ", filename);
 	file.height = getlc(filename);
 	file.map = (char **)malloc(sizeof(char *) * file.height);
+	ft_putendl_C("Siphoning file for validity :: ", filename);
 	while (i < file.height)
 	{
 		get_next_line(fd, &line);
 		ft_putendl_C("Loading Data :: ", line);
 		file.map[i++] = line;
+		if (i > 1)
+			exitreadmap(file, i);
 	}
 	close(fd);
 	ft_putendl_C("Finished reading :: ", filename);
-	if (!allLinesEqual(file))
-	{
-		ft_putendl("File is invalid");
-		exit(-1);
-	}
 	file.scale = 5;
 	return (file);
 }
@@ -95,7 +99,13 @@ t_map			loadMap(int ac, char **argv, t_map *map)
 	if (ac == 2)
 	{
 		ft_putendl_C("Loading file :: ", argv[1]);
-		tmp = readmap(argv[1]);
+		if (!ft_strcmp(ft_strrchr(argv[1], '.'), ".fdf"))
+			tmp = readmap(argv[1]);
+		else
+		{
+			ft_putendl_C("File extension is invalid :: ", argv[1]);
+			exit(-1);
+		}
 	}
 	else
 	{

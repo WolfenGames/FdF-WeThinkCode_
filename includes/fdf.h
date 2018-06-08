@@ -6,7 +6,7 @@
 /*   By: jwolf <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/06 09:50:00 by jwolf             #+#    #+#             */
-/*   Updated: 2018/06/08 07:04:51 by jwolf            ###   ########.fr       */
+/*   Updated: 2018/06/08 11:15:43 by jwolf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 # define FDF_H
 # define MAX_W 1920
 # define MAX_H 1080
-# define DEF_W 1600 
-# define DEF_H 900
+# define DEF_W 400 
+# define DEF_H 400
 
 # define A 				0
 # define S 				1
@@ -54,6 +54,7 @@ typedef struct		s_points
 	int				x;
 	int				y;
 	int				z;
+	int				col;
 }					t_points;
 typedef struct		s_map
 {
@@ -67,12 +68,14 @@ typedef struct		s_map
 	int				width;
 	int				height;
 	int				scale;
+	int				has_reset_on_launch;
 }					t_map;
 
 void				draw_map(t_map *map);
 void				display(t_map map);
 void				incHeight(t_map *map, int scalex, int scaley);
 void				map_init(t_map *map);
+void				freePoints(t_map map);
 void				mapify(t_map *map, t_points ***poofy);
 void				translate(t_map *map);
 
@@ -83,5 +86,6 @@ t_points			new_point(int x, int y, int z);
 t_map				loadMap(int ac, char **argv, t_map *map);
 t_map				get_map(t_map *map);
 t_map				loadFile(int fd, t_map *map);
+t_map				*mapini(t_map *map);
 
 #endif

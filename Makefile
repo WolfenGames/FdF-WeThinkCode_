@@ -6,7 +6,7 @@
 #    By: jwolf <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/06/06 10:11:48 by jwolf             #+#    #+#              #
-#    Updated: 2018/06/08 07:34:44 by jwolf            ###   ########.fr        #
+#    Updated: 2018/06/08 08:31:00 by jwolf            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,7 @@ OBJECTS = $(SOURCES:.c=.o)
 	mv *.o $(SRC)
 
 $(NAME): $(OBJECTS)
-	@echo "\033[1;34;m[Making... Pizza]033[0"
+	@echo "\033[1;34;m[Making... Pizza]\033[0m"
 	cd libft/ && make
 	$(C) $(CFLAGS) -o $(NAME) $(OBJECTS) $(ATTACH)
 
