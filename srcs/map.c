@@ -6,7 +6,7 @@
 /*   By: jwolf <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/07 07:31:07 by jwolf             #+#    #+#             */
-/*   Updated: 2018/06/07 17:47:45 by jwolf            ###   ########.fr       */
+/*   Updated: 2018/06/08 08:02:23 by jwolf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ void	centre(t_map *map)
 void	draw_map(t_map *map)
 {
 	mlx_clear_window(map->mlx, map->window);
-//	ntre(map);
 	display(*map);
 }
 

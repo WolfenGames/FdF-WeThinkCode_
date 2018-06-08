@@ -6,13 +6,13 @@
 #    By: jwolf <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/06/06 10:11:48 by jwolf             #+#    #+#              #
-#    Updated: 2018/06/07 16:39:08 by jwolf            ###   ########.fr        #
+#    Updated: 2018/06/08 07:34:44 by jwolf            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = fdf
 
-CFLAGS += -Wextra -Werror -Wall -I./includes/
+CFLAGS += -Wextra -Wall -I./includes/
 
 ATTACH = -L libft/ -lft -lmlx -framework OpenGL -framework AppKit
 

@@ -6,7 +6,7 @@
 /*   By: jwolf <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/07 16:10:46 by jwolf             #+#    #+#             */
-/*   Updated: 2018/06/07 17:53:22 by jwolf            ###   ########.fr       */
+/*   Updated: 2018/06/08 08:13:16 by jwolf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ t_points		new_point(int x, int y, int z)
 	t_points	new_point;
 
 	new_point.x = x;
-	new_point.y = y;
-	new_point.z = z;
+	new_point.y = z;
+	new_point.z = y;
 	return (new_point);
 }
 

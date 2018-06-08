@@ -6,7 +6,7 @@
 /*   By: jwolf <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/08 15:44:03 by jwolf             #+#    #+#             */
-/*   Updated: 2018/06/07 17:07:27 by jwolf            ###   ########.fr       */
+/*   Updated: 2018/06/08 07:23:08 by jwolf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ void				ft_memdel(void **ap);
 void				ft_putchar(char c);
 void				ft_putchar_fd(char c, int fd);
 void				ft_putendl(char const *s);
+void				ft_putendl_C(char *dest, char *str);
 void				ft_putendl_I(char *str, int a);
 void				ft_putendl_fd(char const *s, int fd);
 void				ft_putnbr(int n);

@@ -1,34 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_putendl_C.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jwolf <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/06/07 07:29:14 by jwolf             #+#    #+#             */
-/*   Updated: 2018/06/08 08:11:52 by jwolf            ###   ########.fr       */
+/*   Created: 2018/06/08 07:14:50 by jwolf             #+#    #+#             */
+/*   Updated: 2018/06/08 07:30:55 by jwolf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/fdf.h"
+#include "../includes/libft.h"
 
-t_map			mapini(t_map *map)
+void	ft_putendl_C(char *dest, char *str)
 {
-	map->scale = 10;
-	map->map_x = 0; 
-	map->map_y = 0;
-	map->map_z = 0;
-	return (*map);
-}
-
-int				main(int ac, char **argv)
-{
-	t_map		map;
-
-	ft_putendl("Welcome to the Jungle");
-	map = mapini(&map);
-	map = loadMap(ac, argv, &map);
-	mapify(&map, &map.points);
-	map_init(&map);
-	return (0);
+	if (dest && str)
+		ft_putendl(ft_strjoin(dest, str));
+	else if (!str)
+		ft_putendl(ft_strjoin(dest, "No filename passed"));
 }

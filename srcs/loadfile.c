@@ -6,7 +6,7 @@
 /*   By: jwolf <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/07 07:36:11 by jwolf             #+#    #+#             */
-/*   Updated: 2018/06/07 17:13:15 by jwolf            ###   ########.fr       */
+/*   Updated: 2018/06/08 07:53:06 by jwolf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,17 +62,22 @@ t_map			readmap(char *filename)
 
 	i = 0;
 	file.height = 0;
-	file.map = NULL;
+	ft_putendl_C("Opening file :: ", filename);
 	if (!(fd = open(filename, O_RDONLY)))
-		return (file);
+	{
+		ft_putendl("Hmmm... Retard you are");
+	}
+	ft_putendl_C("Opened file :: ", filename);
 	file.height = getlc(filename);
 	file.map = (char **)malloc(sizeof(char *) * file.height);
 	while (i < file.height)
 	{
 		get_next_line(fd, &line);
+		ft_putendl_C("Loading Data :: ", line);
 		file.map[i++] = line;
 	}
 	close(fd);
+	ft_putendl_C("Finished reading :: ", filename);
 	if (!allLinesEqual(file))
 	{
 		ft_putendl("File is invalid");
@@ -85,11 +90,17 @@ t_map			readmap(char *filename)
 t_map			loadMap(int ac, char **argv, t_map *map)
 {
 	t_map	tmp;
-
+	
 	tmp = *map;
 	if (ac == 2)
 	{
+		ft_putendl_C("Loading file :: ", argv[1]);
 		tmp = readmap(argv[1]);
+	}
+	else
+	{
+		ft_putendl_C("File name is invalid :( :: ", argv[1]);
+		exit(-1);
 	}
 	map = &tmp;
 	return (*map);

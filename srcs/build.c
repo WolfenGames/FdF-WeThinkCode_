@@ -6,7 +6,7 @@
 /*   By: jwolf <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/07 16:19:49 by jwolf             #+#    #+#             */
-/*   Updated: 2018/06/07 17:15:30 by jwolf            ###   ########.fr       */
+/*   Updated: 2018/06/08 07:59:49 by jwolf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,7 @@ void		mapify(t_map *map, t_points ***poofy)
 	char		**strsplit;
 
 	i = 0;
-//	map->width = count(map->map[i]);
-	map->width = (int)ft_strlen(map->map[0]);
+	map->width = count(map->map[i]);
 	new = (t_points **)malloc(sizeof(t_points *) * map->height);
 	while (i < map->height)
 	{
@@ -51,7 +50,6 @@ void		mapify(t_map *map, t_points ***poofy)
 		strsplit = ft_strsplit(map->map[i], ' ');
 		while (l < map->width)
 		{
-//			new[i][l] = new_point(i, ft_atoi(map->map[i]), l);
 			new[i][l] = new_point(i, ft_atoi(strsplit[l]), l);
 			l++;
 		}

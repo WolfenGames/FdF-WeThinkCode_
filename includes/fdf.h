@@ -6,7 +6,7 @@
 /*   By: jwolf <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/06 09:50:00 by jwolf             #+#    #+#             */
-/*   Updated: 2018/06/07 17:51:58 by jwolf            ###   ########.fr       */
+/*   Updated: 2018/06/08 07:04:51 by jwolf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,12 +45,7 @@
 # define C_GREEN		0x00ff00
 # define C_RED			0xff0000
 
-#ifdef __APPLE___
 # include <mlx.h>
-#elif __linux__
-#include "minilibx/mlx.h"
-#endif
-
 # include <math.h>
 # include "../libft/includes/libft.h"
 
