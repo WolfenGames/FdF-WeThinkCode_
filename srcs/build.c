@@ -31,7 +31,7 @@ static int		count(char *str)
 	return (c);
 }
 
-void		mapify(t_map *map, t_points ***poofy)
+void			mapify(t_map *map, t_points ***poofy)
 {
 	long int	i;
 	long int	l;
@@ -57,7 +57,7 @@ void		mapify(t_map *map, t_points ***poofy)
 	*poofy = new;
 }
 
-t_points	**simulacron(t_map *map)
+t_points		**simulacron(t_map *map)
 {
 	long int		i;
 	long int		j;
@@ -79,7 +79,7 @@ t_points	**simulacron(t_map *map)
 	return (hold);
 }
 
-void	free_points(t_map map)
+void			free_points(t_map map)
 {
 	long int	i;
 

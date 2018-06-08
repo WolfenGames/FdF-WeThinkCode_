@@ -16,7 +16,7 @@ void	debug_strings(t_map map)
 {
 	mlx_string_put(map.mlx, map.window, 10, 10, C_BLUE,
 			ft_strjoin("Pixels :: ", ft_itoa(map.height * map.width)));
-	mlx_string_put(map.mlx, map.window, 10, 30, C_GREEN, 
+	mlx_string_put(map.mlx, map.window, 10, 30, C_GREEN,
 			ft_strjoin("Scale  :: ", ft_itoa(map.scale)));
 	mlx_string_put(map.mlx, map.window, 10, 50, C_GREEN,
 			ft_strjoin("Pos X  :: ", ft_itoa(map.map_x)));
@@ -35,7 +35,7 @@ void	line(t_points p1, t_points p2, t_map *map)
 	float		steps;
 	float		i;
 	int			col;
-	t_points 	sum;
+	t_points	sum;
 
 	i = 0;
 	col = C_GREEN;
@@ -47,7 +47,7 @@ void	line(t_points p1, t_points p2, t_map *map)
 		sum.x = p1.x + i * (p2.x - p1.x);
 		sum.z = p1.z + i * (p2.z - p1.z);
 		mlx_pixel_put(map->mlx, map->window,
-				(DEF_W / 2) + map->map_x + sum.x, 
+				(DEF_W / 2) + map->map_x + sum.x,
 				(DEF_H / 2) + map->map_z + sum.z
 				, p1.col);
 		i += steps;

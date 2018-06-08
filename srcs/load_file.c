@@ -12,7 +12,7 @@
 
 #include "../includes/fdf.h"
 
-static int		getlc(char	*filename)
+static int		getlc(char *filename)
 {
 	int		fd;
 	int		lines;
@@ -70,7 +70,6 @@ t_map			read_map(char *filename)
 	t_map	file;
 
 	i = 0;
-	ft_putendl_C("Opening file :: ", filename);
 	if (!(fd = open(filename, O_RDONLY)))
 		ft_putendl("Hmmm... Retard you are");
 	file.height = getlc(filename);
@@ -93,7 +92,7 @@ t_map			read_map(char *filename)
 t_map			load_map(int ac, char **argv, t_map *map)
 {
 	t_map	tmp;
-	
+
 	tmp = *map;
 	if (ac == 2)
 	{

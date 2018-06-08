@@ -14,7 +14,7 @@
 # define FDF_H
 # define MAX_W 1920
 # define MAX_H 1080
-# define DEF_W 400 
+# define DEF_W 400
 # define DEF_H 400
 
 # define A 				0
@@ -24,7 +24,7 @@
 # define ARROW_UP 		126
 # define ARROW_DOWN		125
 # define ARROW_RIGHT	124
-# define ARROW_LEFT 	123 
+# define ARROW_LEFT 	123
 # define PG_UP 			116
 # define PG_DOWN		121
 # define ESC			53

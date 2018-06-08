@@ -15,7 +15,7 @@
 t_map			*mapini(t_map *map)
 {
 	map->scale = 10;
-	map->map_x = 0; 
+	map->map_x = 0;
 	map->map_y = 0;
 	map->map_z = 0;
 	map->has_reset_on_launch = 0;
