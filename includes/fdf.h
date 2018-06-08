@@ -70,11 +70,9 @@ typedef struct		s_map
 
 void				draw_map(t_map *map);
 void				display(t_map map);
-void				incHeight(t_map *map, int scalex, int scaley);
 void				map_init(t_map *map);
 void				freePoints(t_map map);
 void				mapify(t_map *map, t_points ***poofy);
-void				translate(t_map *map);
 
 int					keyhook(int keycode, t_map *map);
 
