@@ -12,7 +12,7 @@
 
 #include "../includes/fdf.h"
 
-void	centre(t_map *map)
+void	center(t_map *map, int x, int y)
 {
 	int		i;
 	int		j;
@@ -28,12 +28,30 @@ void	centre(t_map *map)
 		while (j < map->width)
 		{
 			map->points[i][j].x -= off_x;
-			map->points[i][j].x += DEF_W / 2;
-			map->points[i][j].y -= off_y;
-			map->points[i][j].y += DEF_H / 2;
+			map->points[i][j].x += x / 2;
+			map->points[i][j].z -= off_y;
+			map->points[i][j].z += y / 2;
 			j++;
 		}
 		i++;
+	}
+}
+
+void	translate(t_map *map)
+{
+	int		i;
+	int		j;
+
+	i = 0;
+	while (i < map->width)
+	{
+		j = 0;
+		while (j < map->height)
+		{
+			map->points[i][j].x += map->map_x;
+			map->points[i][j].y += map->map_y;
+			map->points[i][j].z += map->map_z;
+		}
 	}
 }
 
@@ -54,6 +72,7 @@ void	map_init(t_map *map)
 {
 	map->mlx = mlx_init();
 	map->window = mlx_new_window(map->mlx, DEF_W, DEF_H, "FDF - Standard");
+	center(map, DEF_W, DEF_H);
 	draw_map(map);
 	mlx_key_hook(map->window, keyhook, map);
 	mlx_loop(map->mlx);

@@ -68,12 +68,14 @@ typedef struct		s_map
 	int				has_reset_on_launch;
 }					t_map;
 
+void				center(t_map *map, int x, int y);
 void				draw_map(t_map *map);
 void				display(t_map map);
 void				escape(void);
-void				map_init(t_map *map);
 void				free_points(t_map map);
+void				map_init(t_map *map);
 void				mapify(t_map *map, t_points ***poofy);
+void				translate(t_map *map);
 void				window_new(int keycode, t_map *map);
 
 int					keyhook(int keycode, t_map *map);

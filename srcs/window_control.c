@@ -18,12 +18,14 @@ void	window_new(int keycode, t_map *map)
 	{
 		mlx_destroy_window(map->mlx, map->window);
 		map->window = mlx_new_window(map->mlx, MAX_W, MAX_H, "FdF - MAX");
+		center(map, MAX_W, MAX_H);
 		mlx_key_hook(map->window, keyhook, map);
 	}
 	else if (keycode == NUM_MINUS)
 	{
 		mlx_destroy_window(map->mlx, map->window);
 		map->window = mlx_new_window(map->mlx, DEF_W, DEF_H, "FdF - MIN");
+		center(map, DEF_W, DEF_H);
 		mlx_key_hook(map->window, keyhook, map);
 	}
 }
