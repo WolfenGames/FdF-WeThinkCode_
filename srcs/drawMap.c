@@ -6,7 +6,7 @@
 /*   By: jwolf <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/07 08:18:29 by jwolf             #+#    #+#             */
-/*   Updated: 2018/06/08 12:15:19 by jwolf            ###   ########.fr       */
+/*   Updated: 2018/06/08 12:27:28 by jwolf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ void	debug_strings(t_map map)
 	mlx_string_put(map.mlx, map.window, 10, 70, C_GREEN,
 			ft_strjoin("Pos Y  :: ", ft_itoa(map.map_y)));
 	mlx_string_put(map.mlx, map.window, 10, 90, C_GREEN,
-
+			ft_strjoin("Pos Z  :: ", ft_itoa(map.map_z)));
+	mlx_string_put(map.mlx, map.window, 10, 110, C_RED,
 			ft_strjoin("Map H  :: ", ft_itoa(map.height)));
 	mlx_string_put(map.mlx, map.window, 10, 130, C_RED,
 			ft_strjoin("Map W  :: ", ft_itoa(map.width)));
