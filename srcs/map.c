@@ -45,7 +45,7 @@ void	draw_map(t_map *map)
 		map->map_x = 0;
 		map->map_y = 0;
 		map->map_z = 0;
-		map->has_reset_on_launch = 10;
+		map->has_reset_on_launch = 2;
 	}
 	display(*map);
 }
@@ -53,7 +53,7 @@ void	draw_map(t_map *map)
 void	map_init(t_map *map)
 {
 	map->mlx = mlx_init();
-	map->window = mlx_new_window(map->mlx, DEF_W, DEF_H, "FDF");	
+	map->window = mlx_new_window(map->mlx, DEF_W, DEF_H, "FDF - Standard");	
 	draw_map(map);
 	mlx_key_hook(map->window, keyhook, map);
 	mlx_loop(map->mlx);

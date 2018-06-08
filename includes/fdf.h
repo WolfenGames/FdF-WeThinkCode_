@@ -72,7 +72,7 @@ void				draw_map(t_map *map);
 void				display(t_map map);
 void				escape(void);
 void				map_init(t_map *map);
-void				freePoints(t_map map);
+void				free_points(t_map map);
 void				mapify(t_map *map, t_points ***poofy);
 void				window_new(int keycode, t_map *map);
 
@@ -80,9 +80,9 @@ int					keyhook(int keycode, t_map *map);
 
 t_points			new_point(int x, int y, int z);
 
-t_map				loadMap(int ac, char **argv, t_map *map);
+t_map				load_map(int ac, char **argv, t_map *map);
 t_map				get_map(t_map *map);
-t_map				loadFile(int fd, t_map *map);
-t_map				*mapini(t_map *map);
+t_map				load_file(int fd, t_map *map);
+t_map				*map_init_return(t_map *map);
 
 #endif

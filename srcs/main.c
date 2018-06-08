@@ -27,8 +27,7 @@ int				main(int ac, char **argv)
 	t_map		map;
 
 	ft_putendl("Welcome to the Jungle");
-//	map = mapini(&map);
-	map = loadMap(ac, argv, &map);
+	map = load_map(ac, argv, &map);
 	mapify(&map, &map.points);
 	map_init(&map);
 	return (0);

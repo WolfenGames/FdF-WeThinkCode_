@@ -79,7 +79,7 @@ t_points	**simulacron(t_map *map)
 	return (hold);
 }
 
-void	freePoints(t_map map)
+void	free_points(t_map map)
 {
 	long int	i;
 
