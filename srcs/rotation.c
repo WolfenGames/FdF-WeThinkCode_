@@ -26,8 +26,8 @@ void    rot_x(float angle, t_map *map)
         j = 0;
         while (j < map->width)
         {
-            z1 = map->og_points[i][j].z * cos(angle) - map->og_points[i][j].x * sin(angle);
-            y1 = map->og_points[i][j].x * cos(angle) + map->og_points[i][j].z * sin(angle);
+            z1 = map->points[i][j].z * cos(angle) - map->points[i][j].x * sin(angle);
+            y1 = map->points[i][j].x * cos(angle) + map->points[i][j].z * sin(angle);
             map->points[i][j].z = z1;
             map->points[i][j].y = y1;
             j++;
@@ -50,8 +50,8 @@ void    rot_y(float angle, t_map *map)
         j = 0;
         while (j < map->width)
         {
-            x1 = map->og_points[i][j].z * cos(angle) + map->og_points[i][j].x * sin(angle);
-            z1 = map->og_points[i][j].x * cos(angle) - map->og_points[i][j].z * sin(angle);
+            x1 = map->points[i][j].z * cos(angle) + map->points[i][j].x * sin(angle);
+            z1 = map->points[i][j].x * cos(angle) - map->points[i][j].z * sin(angle);
             map->points[i][j].x = x1;
             map->points[i][j].z = z1;
             j++;
@@ -74,8 +74,8 @@ void    rot_z(float angle, t_map *map)
         j = 0;
         while (j < map->width)
         {
-            x1 = map->og_points[i][j].y * cos(angle) - map->og_points[i][j].x * sin(angle);
-            y1 = map->og_points[i][j].y * sin(angle) + map->og_points[i][j].x * cos(angle);
+            x1 = map->points[i][j].y * cos(angle) - map->points[i][j].x * sin(angle);
+            y1 = map->points[i][j].y * sin(angle) + map->points[i][j].x * cos(angle);
             map->points[i][j].x = x1;
             map->points[i][j].y = y1;
             j++;

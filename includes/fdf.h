@@ -94,8 +94,7 @@ void				scale_map_down(t_map *map);
 void				scale_map_up(t_map *map);
 void				translate(t_map *map);
 void				window_new(int keycode, t_map *map);
-
-int					keyhook(int keycode, t_map *map);
+void				keyhook(int keycode, t_map *map);
 
 t_points			new_point(int x, int y, int z);
 

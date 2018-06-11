@@ -48,7 +48,9 @@ void	map_init(t_map *map)
 	map->window = mlx_new_window(map->mlx, MAX_W, MAX_H, "FDF - Standard");
 	map->s_w = MAX_W;
 	map->s_h = MAX_H;
-	translate(map);
+	rot_x(90.0f, map);
+	rot_y(45.0f, map);
+	rot_z(0.0f, map);
 	center(map);
 	draw_map(map);
 	mlx_hook(map->window, 2, 0, keyhook, map);
