@@ -48,9 +48,9 @@
 
 typedef struct		s_points
 {
-	int				x;
-	int				y;
-	int				z;
+	float			x;
+	float			y;
+	float			z;
 	int				col;
 }					t_points;
 typedef struct		s_map
@@ -60,12 +60,12 @@ typedef struct		s_map
 	t_points		**points;
 	t_points		**og_points;
 	char			**map;
-	int				map_y;
-	int				map_x;
-	int				map_z;
-	int				move_x;
-	int				move_y;
-	int				move_z;
+	float			map_y;
+	float			map_x;
+	float			map_z;
+	float			move_x;
+	float			move_y;
+	float			move_z;
 	int				zoom;
 	int				width;
 	int				height;

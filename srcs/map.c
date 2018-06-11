@@ -92,7 +92,6 @@ void	scale_map_down(t_map *map)
 		while (j < map->width)
 		{
 			map->points[i][j].x -= (map->scale * i + 1);
-//			map->points[i][j].y += (y * k + 1);
 			map->points[i][j].z -= (map->scale * j + 1);
 			j++;
 		}
@@ -114,7 +113,6 @@ void	scale_map_up(t_map *map)
 		while (j < map->width)
 		{
 			map->points[i][j].x += (map->scale * i + 1);
-//			map->points[i][j].y += (y * k + 1);
 			map->points[i][j].z += (map->scale * j + 1);
 			j++;
 		}
@@ -133,7 +131,6 @@ void	map_init(t_map *map)
 	scale_map_up(map);
 	center(map, map->screen_width, map->screen_height);
 	draw_map(map);
-	//center(map, DEF_W, DEF_H);
 	translate(map);
 	mlx_hook(map->window, 2, 1L << 0, keyhook, map);
 	mlx_loop(map->mlx);

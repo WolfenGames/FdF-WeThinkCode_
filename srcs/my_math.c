@@ -19,8 +19,8 @@ float   v2_distance(float x1, float y1, float x2, float y2)
     float   y;
 
     distance = 0;
-    x = ft_power_f((x2 - x1), 2);
-    y = ft_power_f((y2 - y1), 2);
-    distance = ft_sqrt_f(x + y);
+    x = pow((x2 - x1), 2);
+    y = pow((y2 - y1), 2);
+    distance = sqrtā(x + y);
     return (distance);
 }

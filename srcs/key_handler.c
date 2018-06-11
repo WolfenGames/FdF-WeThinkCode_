@@ -31,22 +31,22 @@ static int		displacement(int keycode, t_map *map)
 {
 	if (keycode == ARROW_UP)
 	{
-		map->move_z -= 1 * map->scale;
+		map->move_z -= 0.45f * map->scale;
 		translate(map);
 	}
 	if (keycode == ARROW_DOWN)
 	{
-		map->move_z += 1 * map->scale;
+		map->move_z += 0.45f * map->scale;
 		translate(map);
 	}
 	if (keycode == ARROW_LEFT)
 	{
-		map->move_x -=1 * map->scale;
+		map->move_x -= 0.45f * map->scale;
 		translate(map);
 	}
 	if (keycode == ARROW_RIGHT)
 	{
-		map->move_x += 1 * map->scale;
+		map->move_x += 0.45f * map->scale;
 		translate(map);
 	}
 	return (0); 
