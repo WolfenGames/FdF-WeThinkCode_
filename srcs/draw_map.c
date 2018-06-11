@@ -46,12 +46,7 @@ void	line(t_points p1, t_points p2, t_map *map)
 	{
 		sum.x = p1.x + i * (p2.x - p1.x);
 		sum.z = p1.z + i * (p2.z - p1.z);
-/*		mlx_pixel_put(map->mlx, map->window,
-				(DEF_W / 2) + map->map_x + sum.x,
-				(DEF_H / 2) + map->map_z + sum.z
-				, p1.col);
-*/
-		mlx_pixel_put(map->mlx, map->window, sum.x, sum.z, p1.col);
+		mlx_pixel_put(map->mlx, map->window, sum.x ,sum.z ,p1.col);
 		i += steps;
 	}
 }
@@ -72,6 +67,7 @@ void	display(t_map map)
 				line(map.points[i][j], map.points[i + 1][j], &map);
 			if (j + 1 < map.width)
 				line(map.points[i][j], map.points[i][j + 1], &map);
+
 			j++;
 		}
 		i++;

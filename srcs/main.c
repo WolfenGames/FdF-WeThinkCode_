@@ -21,6 +21,7 @@ t_map			*mapini(t_map *map)
 	map->move_x = 0;
 	map->move_y = 0;
 	map->move_z = 0;
+	map->zoom = 0;
 	map->has_reset_on_launch = -1;
 	return (map);
 }
@@ -32,6 +33,7 @@ int				main(int ac, char **argv)
 	ft_putendl("Welcome to the Jungle");
 	map = load_map(ac, argv, &map);
 	mapify(&map, &map.points);
+	mapify(&map, &map.og_points);
 	map_init(&map);
 	return (0);
 }

@@ -58,6 +58,7 @@ typedef struct		s_map
 	void			*window;
 	void			*mlx;
 	t_points		**points;
+	t_points		**og_points;
 	char			**map;
 	int				map_y;
 	int				map_x;
@@ -65,8 +66,11 @@ typedef struct		s_map
 	int				move_x;
 	int				move_y;
 	int				move_z;
+	int				zoom;
 	int				width;
 	int				height;
+	int				screen_height;
+	int				screen_width;
 	int				scale;
 	int				has_reset_on_launch;
 }					t_map;
@@ -78,6 +82,8 @@ void				escape(void);
 void				free_points(t_map map);
 void				map_init(t_map *map);
 void				mapify(t_map *map, t_points ***poofy);
+void				scale_map_down(t_map *map);
+void				scale_map_up(t_map *map);
 void				translate(t_map *map);
 void				window_new(int keycode, t_map *map);
 
