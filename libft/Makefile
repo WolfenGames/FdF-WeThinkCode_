@@ -29,7 +29,7 @@ SOURCES = $(SRC)ft_memset.c $(SRC)ft_bzero.c $(SRC)ft_memcpy.c \
 		  $(SRC)ft_lstdel.c $(SRC)ft_lstadd.c $(SRC)ft_lstiter.c \
 		  $(SRC)ft_lstmap.c $(SRC)ft_intminmax.c $(SRC)ft_strtrimcpy.c \
 		  $(SRC)ft_clearspace.c $(SRC)ft_print_memory.c $(SRC)get_next_line.c \
-		  $(SRC)ft_putendl_I.c $(SRC)ft_putendl_C.c
+		  $(SRC)ft_putendl_i.c $(SRC)ft_putendl_c.c
 
 OBJECTS = $(SOURCES:.c=.o)
 

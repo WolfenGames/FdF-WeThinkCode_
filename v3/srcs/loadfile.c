@@ -70,23 +70,23 @@ t_map			readmap(char *filename)
 	t_map	file;
 
 	i = 0;
-	ft_putendl_C("Opening file :: ", filename);
+	ft_putendl_c("Opening file :: ", filename);
 	if (!(fd = open(filename, O_RDONLY)))
 		ft_putendl("Hmmm... Retard you are");
-	ft_putendl_C("Opened file :: ", filename);
+	ft_putendl_c("Opened file :: ", filename);
 	file.height = getlc(filename);
 	file.map = (char **)malloc(sizeof(char *) * file.height);
-	ft_putendl_C("Siphoning file for validity :: ", filename);
+	ft_putendl_c("Siphoning file for validity :: ", filename);
 	while (i < file.height)
 	{
 		get_next_line(fd, &line);
-		ft_putendl_C("Loading Data :: ", line);
+		ft_putendl_c("Loading Data :: ", line);
 		file.map[i++] = line;
 		if (i > 1)
 			exitreadmap(file, i);
 	}
 	close(fd);
-	ft_putendl_C("Finished reading :: ", filename);
+	ft_putendl_c("Finished reading :: ", filename);
 	file.scale = 5;
 	return (file);
 }
@@ -98,18 +98,18 @@ t_map			loadMap(int ac, char **argv, t_map *map)
 	tmp = *map;
 	if (ac == 2)
 	{
-		ft_putendl_C("Loading file :: ", argv[1]);
+		ft_putendl_c("Loading file :: ", argv[1]);
 		if (!ft_strcmp(ft_strrchr(argv[1], '.'), ".fdf"))
 			tmp = readmap(argv[1]);
 		else
 		{
-			ft_putendl_C("File extension is invalid :: ", argv[1]);
+			ft_putendl_c("File extension is invalid :: ", argv[1]);
 			exit(-1);
 		}
 	}
 	else
 	{
-		ft_putendl_C("File name is invalid :( :: ", argv[1]);
+		ft_putendl_c("File name is invalid :( :: ", argv[1]);
 		exit(-1);
 	}
 	map = &tmp;

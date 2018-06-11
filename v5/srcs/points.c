@@ -1,21 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putendl_c.c                                     :+:      :+:    :+:   */
+/*   points.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jwolf <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/06/08 07:14:50 by jwolf             #+#    #+#             */
-/*   Updated: 2018/06/11 09:20:15 by jwolf            ###   ########.fr       */
+/*   Created: 2018/06/07 16:10:46 by jwolf             #+#    #+#             */
+/*   Updated: 2018/06/08 11:11:38 by jwolf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/libft.h"
+#include "../includes/fdf.h"
 
-void	ft_putendl_c(char *dest, char *str)
+t_points		new_point(int x, int y, int z)
 {
-	if (dest && str)
-		ft_putendl(ft_strjoin(dest, str));
-	else if (!str)
-		ft_putendl(ft_strjoin(dest, "No string passed"));
+	t_points	new_point;
+
+	new_point.x = x;
+	new_point.y = y;
+	new_point.z = z;
+	if (y > 0)
+		new_point.col = C_RED;
+	else if (y < 0)
+		new_point.col = C_GREEN;
+	else
+		new_point.col = C_BLUE;
+	return (new_point);
 }

@@ -1,21 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putendl_c.c                                     :+:      :+:    :+:   */
+/*   loop_handler.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jwolf <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/06/08 07:14:50 by jwolf             #+#    #+#             */
-/*   Updated: 2018/06/11 09:20:15 by jwolf            ###   ########.fr       */
+/*   Created: 2018/06/11 08:05:47 by jwolf             #+#    #+#             */
+/*   Updated: 2018/06/11 08:05:48 by jwolf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/libft.h"
+#include "../includes/fdf.h"
 
-void	ft_putendl_c(char *dest, char *str)
+int     loop_hook(t_map *map)
 {
-	if (dest && str)
-		ft_putendl(ft_strjoin(dest, str));
-	else if (!str)
-		ft_putendl(ft_strjoin(dest, "No string passed"));
+    mlx_key_hook(map->window, keyhook, map);   
+    return (0);
 }
