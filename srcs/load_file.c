@@ -85,7 +85,6 @@ t_map			read_map(char *filename)
 	}
 	close(fd);
 	ft_putendl_c("Finished reading :: ", filename);
-	file.scale = 5;
 	return (file);
 }
 

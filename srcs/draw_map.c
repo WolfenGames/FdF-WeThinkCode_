@@ -16,8 +16,8 @@ void	debug_strings(t_map map)
 {
 	mlx_string_put(map.mlx, map.window, 10, 10, C_BLUE,
 			ft_strjoin("Pixels :: ", ft_itoa(map.height * map.width)));
-	mlx_string_put(map.mlx, map.window, 10, 30, C_GREEN,
-			ft_strjoin("Scale  :: ", ft_itoa(map.scale)));
+/* 	mlx_string_put(map.mlx, map.window, 10, 30, C_GREEN,
+			ft_strjoin("Scale  :: ", ft_itoa(map.scale))); */
 	mlx_string_put(map.mlx, map.window, 10, 50, C_GREEN,
 			ft_strjoin("Pos X  :: ", ft_itoa(map.map_x)));
 	mlx_string_put(map.mlx, map.window, 10, 70, C_GREEN,

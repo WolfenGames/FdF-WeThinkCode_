@@ -14,15 +14,19 @@
 
 t_map			*mapini(t_map *map)
 {
-	map->scale = 10;
 	map->map_x = 0;
 	map->map_y = 0;
 	map->map_z = 0;
 	map->move_x = 0;
 	map->move_y = 0;
 	map->move_z = 0;
+	map->scale_x = 2;
+	map->scale_y = 1;
+	map->scale_z = 2;
+	map->rot_x = 0;
+	map->rot_y = 0;
+	map->rot_z = 0;
 	map->zoom = 0;
-	map->has_reset_on_launch = -1;
 	return (map);
 }
 
