@@ -21,7 +21,7 @@ void	window_new(int keycode, t_map *map)
 		map->s_w = MAX_W;
 		map->s_h = MAX_H;
 		center(map);
-		mlx_hook(map->window, 2, 1L << 0, keyhook, map);
+		mlx_hook(map->window, 2, 0, keyhook, map);
 	}
 	else if (keycode == NUM_MINUS)
 	{
@@ -30,7 +30,7 @@ void	window_new(int keycode, t_map *map)
 		map->s_w = DEF_W;
 		map->s_h= DEF_H;
 		center(map);
-		mlx_hook(map->window, 2, 1L << 0, keyhook, map);
+		mlx_hook(map->window, 2, 0, keyhook, map);
 	}
 }
 

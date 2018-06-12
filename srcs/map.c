@@ -36,6 +36,7 @@ void	center(t_map *map)
 		i++;
 	}
 }
+
 void	draw_map(t_map *map)
 {
 	mlx_clear_window(map->mlx, map->window);
@@ -48,6 +49,12 @@ void	map_init(t_map *map)
 	map->window = mlx_new_window(map->mlx, MAX_W, MAX_H, "FDF - Standard");
 	map->s_w = MAX_W;
 	map->s_h = MAX_H;
+	map->scale_x = 1;
+	map->scale_y = 1;
+	map->scale_z = 1;
+	map->move_x = 0;
+	map->move_y = 0;
+	map->move_z = 0;
 	rot_x(90.0f, map);
 	rot_y(45.0f, map);
 	rot_z(0.0f, map);

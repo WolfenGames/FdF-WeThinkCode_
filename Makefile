@@ -24,7 +24,7 @@ SRC = srcs/
 
 SOURCES = $(SRC)main.c $(SRC)map.c $(SRC)load_file.c $(SRC)draw_map.c \
 		 $(SRC)key_handler.c $(SRC)points.c $(SRC)build.c \
-		 $(SRC)window_control.c $(SRC)rotation.c
+		 $(SRC)window_control.c $(SRC)rotation.c $(SRC)map_manipulation.c
 
 OBJECTS = $(SOURCES:.c=.o)
 

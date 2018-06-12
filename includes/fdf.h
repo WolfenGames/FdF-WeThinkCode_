@@ -87,16 +87,17 @@ void				escape(void);
 void				free_points(t_map map);
 void				map_init(t_map *map);
 void				mapify(t_map *map, t_points ***poofy);
+void				move_map(t_map *map);
 void				rot_x(float angle, t_map *map);
 void				rot_y(float angle, t_map *map);
 void				rot_z(float angle, t_map *map);
-void				scale_map_down(t_map *map);
-void				scale_map_up(t_map *map);
+void				scale_map(t_map *map);
 void				translate(t_map *map);
 void				window_new(int keycode, t_map *map);
 void				keyhook(int keycode, t_map *map);
 
 t_points			new_point(int x, int y, int z);
+t_points			**simulacron(t_map *map);
 
 t_map				load_map(int ac, char **argv, t_map *map);
 t_map				get_map(t_map *map);
