@@ -39,16 +39,20 @@ void	line(t_points p1, t_points p2, t_map *map)
 	float		steps;
 	float		i;
 	t_points	sum;
-
+	int			col;
 	i = 0;
 	steps = (float)pow((fmax(
-					fabs((float)(p1.x - p2.x)),
-					fabs((float)(p1.z - p2.z)))), -1);
+					fabs((float)(p2.x - p1.x)),
+					fabs((float)(p2.z - p1.z)))), -1);
+	if (p2.col == 1 && p1.col == 1)
+		col = C_RED;
+	else
+		col = C_GREEN;
 	while (i <= 1)
 	{
 		sum.x = p1.x + i * (p2.x - p1.x);
 		sum.z = p1.z + i * (p2.z - p1.z);
-		mlx_pixel_put(map->mlx, map->window, sum.x ,sum.z ,p1.col);
+		mlx_pixel_put(map->mlx, map->window, sum.x ,sum.z , col);
 		i += steps;
 	}
 }
