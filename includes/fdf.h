@@ -42,7 +42,7 @@
 # define C_GREEN		0x00ff00
 # define C_RED			0xff0000
 
-# include <mlx.h>
+# include "../minilibx/mlx.h"
 # include <math.h>
 # include "../libft/includes/libft.h"
 
