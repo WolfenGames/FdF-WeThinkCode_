@@ -19,11 +19,11 @@ t_points		new_point(int x, int y, int z)
 	new_point.x = x;
 	new_point.y = y;
 	new_point.z = z;
-	if (y == 0)
-		new_point.col = 0;
-	else if (y > x)
-		new_point.col = 1;
+	if (y > 0)
+		new_point.col = C_RED;
+	else if (y < 0)
+		new_point.col = C_GREEN;
 	else
-		new_point.col = 2;
+		new_point.col = C_BLUE;
 	return (new_point);
 }

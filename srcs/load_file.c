@@ -6,7 +6,7 @@
 /*   By: jwolf <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/07 07:36:11 by jwolf             #+#    #+#             */
-/*   Updated: 2018/06/20 08:51:20 by jwolf            ###   ########.fr       */
+/*   Updated: 2018/06/08 11:31:32 by jwolf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,16 +38,20 @@ static int		all_lines_equal(t_map map, int curr)
 {
 	int		j;
 	int		i;
-	int		l;
+	size_t	k;
 
 	i = 0;
 	j = 0;
-	l = ft_strlen(map.map[0]);
 	while (map.map[i] && i < curr)
 	{
-		j = ((int)ft_strlen(map.map[i]) == l) ? 1 : 0;
-		if (j == 0)
-			break ;
+		k = 0;
+		while (k < ft_strlen(map.map[i]))
+		{
+			j = (ft_isdigit(map.map[i][k]) || map.map[i][k] == ' ') ? 1 : 0;
+			if (j == 0)
+				break ;
+			k++;
+		}
 		i++;
 	}
 	return (j);
@@ -85,6 +89,7 @@ t_map			read_map(char *filename)
 	}
 	close(fd);
 	ft_putendl_c("Finished reading :: ", filename);
+	file.scale = 5;
 	return (file);
 }
 

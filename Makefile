@@ -22,9 +22,9 @@ C = gcc
 
 SRC = srcs/
 
-SOURCES = $(SRC)main.c $(SRC)map.c $(SRC)load_file.c $(SRC)draw_map.c \
-		 $(SRC)key_handler.c $(SRC)points.c $(SRC)build.c \
-		 $(SRC)window_control.c $(SRC)rotation.c $(SRC)map_manipulation.c
+SOURCES = $(SRC)build.c $(SRC)draw_map.c $(SRC)key_handler.c $(SRC)load_file.c \
+			$(SRC)loop_handler.c $(SRC)main.c $(SRC)map.c \
+			$(SRC)points.c $(SRC)value_map.c $(SRC)window_control.c
 
 OBJECTS = $(SOURCES:.c=.o)
 

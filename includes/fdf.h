@@ -6,7 +6,7 @@
 /*   By: jwolf <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/06 09:50:00 by jwolf             #+#    #+#             */
-/*   Updated: 2018/06/18 12:13:25 by jwolf            ###   ########.fr       */
+/*   Updated: 2018/06/08 12:08:55 by jwolf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 # define FDF_H
 # define MAX_W 1920
 # define MAX_H 1080
-# define DEF_W 640
-# define DEF_H 480
+# define DEF_W 400
+# define DEF_H 400
 
 # define A 				0
 # define S 				1
@@ -35,10 +35,9 @@
 # define NUM_4			86
 # define NUM_6			88
 
-# define ANGL			45
+# define DEF_ANGLE		45
 # define MAX_SCALE		50
-
-# define MAPS			map->dist
+# define MS				map->scale
 
 # define C_BLUE			0x0000ff
 # define C_GREEN		0x00ff00
@@ -50,9 +49,9 @@
 
 typedef struct		s_points
 {
-	float			x;
-	float			y;
-	float			z;
+	int				x;
+	int				y;
+	int				z;
 	int				col;
 }					t_points;
 typedef struct		s_map
@@ -60,45 +59,33 @@ typedef struct		s_map
 	void			*window;
 	void			*mlx;
 	t_points		**points;
-	t_points		**og_points;
 	char			**map;
-	float			map_y;
-	float			map_x;
-	float			map_z;
-	float			move_x;
-	float			move_y;
-	float			move_z;
-	float			rot_x;
-	float			rot_y;
-	float			rot_z;
-	float			scale_x;
-	float			scale_y;
-	float			scale_z;
-	float			speed;
-	float			dist;
-	int				zoom;
+	int				map_y;
+	int				map_x;
+	int				map_z;
+	int				move_x;
+	int				move_y;
+	int				move_z;
 	int				width;
 	int				height;
-	int				s_w;
-	int				s_h;
+	int				scale;
+	int				has_reset_on_launch;
 }					t_map;
 
+void				center(t_map *map, int x, int y);
 void				draw_map(t_map *map);
 void				display(t_map map);
 void				escape(void);
 void				free_points(t_map map);
 void				map_init(t_map *map);
 void				mapify(t_map *map, t_points ***poofy);
-void				rot_x(float angle, t_map *map);
-void				rot_y(float angle, t_map *map);
-void				rot_z(float angle, t_map *map);
+void				translate(t_map *map);
 void				window_new(int keycode, t_map *map);
 
 int					keyhook(int keycode, t_map *map);
-int					mousehook(int button, int x, int y, t_map *map);
+int					loop_hook(t_map *map);
 
 t_points			new_point(int x, int y, int z);
-t_points			**simulacron(t_map *map);
 
 t_map				load_map(int ac, char **argv, t_map *map);
 t_map				get_map(t_map *map);

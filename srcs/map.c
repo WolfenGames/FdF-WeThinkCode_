@@ -12,7 +12,7 @@
 
 #include "../includes/fdf.h"
 
-void	center(t_map *map)
+void	center(t_map *map, int x, int y)
 {
 	int		i;
 	int		j;
@@ -28,44 +28,54 @@ void	center(t_map *map)
 		while (j < map->width)
 		{
 			map->points[i][j].x -= off_x;
-			map->points[i][j].x += map->s_w / 2;
+			map->points[i][j].x += x / 2;
 			map->points[i][j].z -= off_y;
-			map->points[i][j].z += map->s_h / 2;
+			map->points[i][j].z += y / 2;
 			j++;
 		}
 		i++;
 	}
 }
 
+void	translate(t_map *map)
+{
+	int		i;
+	int		j;
+
+	i = 0;
+	while (i < map->height)
+	{
+		j = 0;
+		while (j < map->width)
+		{
+			map->points[i][j].x += map->move_x;
+			map->points[i][j].y += map->move_y;
+			map->points[i][j].z += map->move_z;
+			j++;
+		}
+		i++;
+	}
+	map->move_x = 0;
+	map->move_y = 0;
+	map->move_z = 0;
+	map->map_x = map->points[map->width / 2][map->height / 2].x;
+	map->map_y = map->points[map->width / 2][map->height / 2].y;
+	map->map_z = map->points[map->width / 2][map->height / 2].z;
+}
+
 void	draw_map(t_map *map)
 {
-	t_map	mapcpy;
-
 	mlx_clear_window(map->mlx, map->window);
-	mapcpy = *map;
-	mapcpy.points = simulacron(map);
-	rot_x(map->rot_x, &mapcpy);
-	rot_y(map->rot_y, &mapcpy);
-	rot_z(map->rot_z, &mapcpy);
-	free_points(mapcpy);
-	center(map);
 	display(*map);
 }
 
 void	map_init(t_map *map)
 {
-	mapify(map, &map->points);
 	map->mlx = mlx_init();
 	map->window = mlx_new_window(map->mlx, DEF_W, DEF_H, "FDF - Standard");
-	map->s_w = DEF_W;
-	map->s_h = DEF_H;
-	map->map_x = 0;
-	map->map_y = 0;
-	map->map_z = 0;
-	map->scale_x = 1;
-	map->scale_y = 1;
-	map->scale_z = 1;
+	center(map, DEF_W, DEF_H);
+	mlx_hook(map->window, 2, 1L << 0, keyhook, map);
 	draw_map(map);
-	mlx_key_hook(map->window, keyhook, map);
+	translate(map);
 	mlx_loop(map->mlx);
 }

@@ -1,18 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mouse_handle.c                                     :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jwolf <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: bsouchet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/06/12 16:46:07 by jwolf             #+#    #+#             */
-/*   Updated: 2018/06/12 16:46:16 by jwolf            ###   ########.fr       */
+/*   Created: 2016/02/18 18:59:29 by bsouchet          #+#    #+#             */
+/*   Updated: 2016/02/18 19:02:57 by bsouchet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/fdf.h"
-
-int		mousehook(int button, int x, int y, t_map *map)
+int		ft_strcmp(char *s1, char *s2)
 {
- 	return (0);
+	int	i;
+
+	i = 0;
+	while (s1[i] && s2[i] && (unsigned char)s1[i] == (unsigned char)s2[i])
+		i++;
+	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
 }

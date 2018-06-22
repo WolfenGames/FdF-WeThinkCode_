@@ -17,7 +17,6 @@ int				main(int ac, char **argv)
 	t_map		map;
 
 	ft_putendl("Welcome to the Jungle");
-	map.dist = 20;
 	map = load_map(ac, argv, &map);
 	mapify(&map, &map.points);
 	map_init(&map);
