@@ -15,10 +15,12 @@ int     expose_hook(t_map *map)
 {
     int     x;
     int     y;
+    int     *size_line;
 
     y = -1;
+    size_line = (int *)malloc(sizeof(int));
     map->img = mlx_new_image(map->mlx, map->w, map->h);
-    map->data = mlx_get_data_addr(map->img, &map->bpp, 10, &map->endian);
+    map->data = mlx_get_data_addr(map->img, &map->bpp, size_line, &map->endian);
     mlx_put_image_to_window(map->mlx, map->win, map->img, 0, 0);
     return (0);
 }

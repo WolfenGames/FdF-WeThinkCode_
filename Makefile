@@ -21,7 +21,9 @@ ATTACH = -L libft/ -lft -lmlx -framework OpenGL -framework AppKit
 C = gcc
 
 HEADERS = includes
+
 DIR_S = srcs
+
 DIR_O = obj
 
 SOURCES = build.c draw_map.c key_handler.c load_file.c \

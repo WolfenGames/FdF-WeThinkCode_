@@ -84,7 +84,6 @@ t_map			read_map(char *filename)
 	while (i < file.height)
 	{
 		get_next_line(fd, &line);
-		ft_putendl_c("Loading Data :: ", line);
 		file.map[i++] = line;
 		if (i > 1)
 			exit_read_map(file, i);

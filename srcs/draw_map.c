@@ -32,8 +32,8 @@ void	debug_strings(t_map map)
 
 void	line(t_points p1, t_points p2, t_map *map)
 {
-	float		steps;
-	float		i;
+	double		steps;
+	double		i;
 	int			col;
 	t_points	sum;
 
