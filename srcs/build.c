@@ -31,6 +31,32 @@ static int		count(char *str)
 	return (c);
 }
 
+void			mapify_y(t_map *map, t_points ***poofy, float y)
+{
+	long int	i;
+	long int	l;
+	t_points	**new;
+	char		**strsplit;
+
+	i = 0;
+	map->width = count(map->map[i]);
+	new = (t_points **)malloc(sizeof(t_points *) * map->height);
+	while (i < map->height)
+	{
+		new[i] = (t_points *)malloc(sizeof(t_points) * map->width);
+		l = 0;
+		strsplit = ft_strsplit(map->map[i], ' ');
+		while (l < map->width)
+		{
+			new[i][l] = new_point(i * MS, y * MS, l * MS, map);
+			l++;
+		}
+		free(strsplit);
+		i++;
+	}
+	*poofy = new;
+}
+
 void			mapify(t_map *map, t_points ***poofy)
 {
 	long int	i;
@@ -48,7 +74,7 @@ void			mapify(t_map *map, t_points ***poofy)
 		strsplit = ft_strsplit(map->map[i], ' ');
 		while (l < map->width)
 		{
-			new[i][l] = new_point(i * MS, ft_atoi(strsplit[l]) * MS, l * MS);
+			new[i][l] = new_point(i * MS, ft_atoi(strsplit[l]) * MS, l * MS, map);
 			l++;
 		}
 		free(strsplit);

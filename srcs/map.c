@@ -73,9 +73,13 @@ void	map_init(t_map *map)
 {
 	map->mlx = mlx_init();
 	map->window = mlx_new_window(map->mlx, DEF_W, DEF_H, "FDF - Standard");
-	center(map, DEF_W, DEF_H);
-	mlx_hook(map->window, 2, 1L << 0, keyhook, map);
-	draw_map(map);
+	map->curr_height = DEF_H;
+	map->curr_width = DEF_W;
+	mlx_loop_hook(map->mlx, loop_hook, map);
 	translate(map);
+	center(map, map->curr_width + map->move_x, map->curr_height + map->move_y);
+	draw_map(map);
+	mlx_do_key_autorepeaton(map->mlx);
+	mlx_do_sync(map->mlx);
 	mlx_loop(map->mlx);
 }

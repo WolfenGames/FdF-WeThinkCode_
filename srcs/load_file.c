@@ -47,7 +47,7 @@ static int		all_lines_equal(t_map map, int curr)
 		k = 0;
 		while (k < ft_strlen(map.map[i]))
 		{
-			j = (ft_isdigit(map.map[i][k]) || map.map[i][k] == ' ') ? 1 : 0;
+			j = (ft_isdigit(map.map[i][k]) || map.map[i][k] == ' ' || map.map[i][k] == '-') ? 1 : 0;
 			if (j == 0)
 				break ;
 			k++;
@@ -79,6 +79,8 @@ t_map			read_map(char *filename)
 	file.height = getlc(filename);
 	file.map = (char **)malloc(sizeof(char *) * file.height);
 	ft_putendl_c("Siphoning file for validity :: ", filename);
+	if (file.height <= 1 || file.width <= 1)
+		escape(&file);
 	while (i < file.height)
 	{
 		get_next_line(fd, &line);

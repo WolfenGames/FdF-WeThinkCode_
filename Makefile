@@ -20,35 +20,41 @@ ATTACH = -L libft/ -lft -lmlx -framework OpenGL -framework AppKit
 
 C = gcc
 
-SRC = srcs/
+HEADERS = includes
+DIR_S = srcs
+DIR_O = obj
 
-SOURCES = $(SRC)build.c $(SRC)draw_map.c $(SRC)key_handler.c $(SRC)load_file.c \
-			$(SRC)loop_handler.c $(SRC)main.c $(SRC)map.c \
-			$(SRC)points.c $(SRC)value_map.c $(SRC)window_control.c
+SOURCES = build.c draw_map.c key_handler.c load_file.c \
+			loop_handler.c	main.c map.c points.c value_map.c \
+			window_control.c rotate.c
 
-OBJECTS = $(SOURCES:.c=.o)
+SRCS = $(addprefix $(DIR_S)/,$(SOURCES))
+OBJECTS = $(addprefix $(DIR_O)/,$(SOURCES:.c=.o))
 
-%.o:		%.c
+$(DIR_O)/%.o:		$(DIR_S)/%.c $(HEADERS)/$(NAME).h
 	@echo "\033[1;35;m[Compiling $<] \t\033[0m"
-	@$(C) $(CFLAGS) -c $<
-	@mv *.o $(SRC)
+	@$(C) $(CFLAGS) -c -o $@ $<
 
-$(NAME): $(OBJECTS)
+$(NAME): temporary $(OBJECTS)
 	@echo "\033[1;34;m[Making... Pizza]\033[0m"
 	@make -C libft
 	$(C) $(CFLAGS) -o $(NAME) $(OBJECTS) $(ATTACH)
 
-all: $(NAME)
+all: temporary $(NAME)
+
+temporary:
+	@mkdir -p obj
 
 clean:
 	@echo "\033[1;33;m[Cleaning]\033[0m"
-	make -C libft clean
-	rm -rf $(OBJECTS)
+	@make -C libft clean
+	@rm -rf $(OBJECTS)
 
 fclean: clean
 	@echo "\033[1;32;m[Force Cleaning]\033[0m"
-	make -C libft fclean
-	rm -rf $(NAME)
+	@make -C libft fclean
+	@rm -rf $(NAME)
+	@rm -rf $(DIR_O)
 
 re: fclean clean all
 	@echo "\033[1;31;m[Recompiled]\033[0m"

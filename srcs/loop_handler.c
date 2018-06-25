@@ -14,6 +14,8 @@
 
 int     loop_hook(t_map *map)
 {
-    mlx_key_hook(map->window, keyhook, map);   
+    mlx_do_key_autorepeaton(map->mlx);
+    center(map, map->curr_width, map->curr_height);
+	mlx_hook(map->window, 2, 1L << 0, keyhook, map); 
     return (0);
 }

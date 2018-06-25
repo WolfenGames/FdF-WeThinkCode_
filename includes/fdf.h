@@ -38,6 +38,7 @@
 # define DEF_ANGLE		45
 # define MAX_SCALE		50
 # define MS				map->scale
+# define MP				map->points
 
 # define C_BLUE			0x0000ff
 # define C_GREEN		0x00ff00
@@ -49,10 +50,11 @@
 
 typedef struct		s_points
 {
-	int				x;
-	int				y;
-	int				z;
+	float			x;
+	float			y;
+	float			z;
 	int				col;
+	t_bool			move;
 }					t_points;
 typedef struct		s_map
 {
@@ -60,6 +62,8 @@ typedef struct		s_map
 	void			*mlx;
 	t_points		**points;
 	char			**map;
+	float			curr_width;
+	float			curr_height;
 	int				map_y;
 	int				map_x;
 	int				map_z;
@@ -68,24 +72,32 @@ typedef struct		s_map
 	int				move_z;
 	int				width;
 	int				height;
-	int				scale;
+	float			scale;
+	int				pixels;
+	float			y_height;
 	int				has_reset_on_launch;
 }					t_map;
 
 void				center(t_map *map, int x, int y);
+void    			do_rot(t_map *map);
 void				draw_map(t_map *map);
 void				display(t_map map);
-void				escape(void);
+void				escape(t_map *map);
 void				free_points(t_map map);
 void				map_init(t_map *map);
 void				mapify(t_map *map, t_points ***poofy);
+void				mapify_y(t_map *map, t_points ***poofy, float y);
+void				map_scale(t_map *map);
 void				translate(t_map *map);
 void				window_new(int keycode, t_map *map);
 
 int					keyhook(int keycode, t_map *map);
 int					loop_hook(t_map *map);
 
-t_points			new_point(int x, int y, int z);
+float				ft_distance(t_points p1, t_points p2);
+
+t_points			new_point(int x, int y, int z, t_map *map);
+t_points			**simulacron(t_map *map);
 
 t_map				load_map(int ac, char **argv, t_map *map);
 t_map				get_map(t_map *map);
