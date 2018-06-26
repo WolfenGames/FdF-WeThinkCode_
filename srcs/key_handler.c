@@ -31,6 +31,11 @@ static	int		get_scale(int keycode, t_map *map)
 	return (0);
 }
 
+void			rotate(int keycode, t_map *map)
+{
+
+}
+
 void			change_height(int keycode, t_map *map)
 {
 	int		i;

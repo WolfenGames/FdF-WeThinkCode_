@@ -35,7 +35,7 @@
 # define NUM_4			86
 # define NUM_6			88
 
-# define DEF_ANGLE		45
+# define DEF_ANGLE		15
 # define MAX_SCALE		50
 # define MS				map->scale
 # define MP				map->points
