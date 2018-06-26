@@ -1,30 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   loop_handler.c                                     :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jwolf <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/06/11 08:05:47 by jwolf             #+#    #+#             */
-/*   Updated: 2018/06/11 08:05:48 by jwolf            ###   ########.fr       */
+/*   Created: 2018/06/07 07:29:14 by jwolf             #+#    #+#             */
+/*   Updated: 2018/06/08 11:33:46 by jwolf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
 
-int     close_hook(int button, t_map *map)
+int				main(int ac, char **argv)
 {
-    (void)map;
-    (void)button;
-    escape();
-    return (0);
-}
+	t_map		*map;
 
-int     loop_hook(t_map *map)
-{
-    mlx_do_key_autorepeaton(map->mlx);
-    center(map, map->curr_width, map->curr_height);
-//  mlx_hook(map->window, 17, 0, close_hook, map);
-    mlx_hook(map->window, 2, 1L << 0, keyhook, map); 
-    return (0);
+	map = malloc(sizeof(t_map));
+	ft_putendl("Welcome to the Jungle");
+	*map = load_map(ac, argv, map);
+	mapify(map, &map->points);
+	map_init(map);
+	return (0);
 }
