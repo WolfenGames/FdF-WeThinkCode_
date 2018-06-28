@@ -21,6 +21,9 @@ void	window_new(int keycode, t_map *map)
 		center(map, MAX_W, MAX_H);
 		map->curr_height = MAX_H;
 		map->curr_width = MAX_W;
+		rot_x(map->rot_x, map);
+		rot_y(map->rot_y, map);
+		rot_z(map->rot_z, map);
 		translate(map);
 		mlx_hook(map->window, 2, 1L << 0, keyhook, map);
 	}
@@ -31,6 +34,9 @@ void	window_new(int keycode, t_map *map)
 		center(map, DEF_W, DEF_H);
 		map->curr_width = DEF_W;
 		map->curr_height = DEF_H;
+		rot_x(map->rot_x, map);
+		rot_y(map->rot_y, map);
+		rot_z(map->rot_z, map);
 		translate(map);
 		mlx_hook(map->window, 2, 1L << 0, keyhook, map);
 	}
