@@ -30,10 +30,14 @@
 # define ESC			53
 # define NUM_PLUS		69
 # define NUM_MINUS		78
-# define NUM_8			91
+# define NUM_1			83
+# define NUM_3			85
 # define NUM_2			84
 # define NUM_4			86
 # define NUM_6			88
+# define NUM_7			89
+# define NUM_9			92
+# define NUM_8			91
 
 # define DEF_ANGLE		15
 # define MAX_SCALE		50

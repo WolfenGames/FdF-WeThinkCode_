@@ -31,9 +31,30 @@ static	int		get_scale(int keycode, t_map *map)
 	return (0);
 }
 
-void			rotate(int keycode, t_map *map)
+int			rotate(int keycode, t_map *map)
 {
-
+	if (keycode == NUM_2 || keycode == NUM_4 || keycode == NUM_6 ||
+		keycode == NUM_8 || keycode == NUM_1 || keycode == NUM_3 ||
+		keycode == NUM_7 || keycode == NUM_9)
+	{
+		if (keycode == NUM_4)
+			map->rot_x += 1;
+		if (keycode == NUM_6)
+			map->rot_x -= 1;
+		if (keycode == NUM_8)
+			map->rot_y += 1;
+		if (keycode == NUM_2)
+			map->rot_y -= 1;
+		if (keycode == NUM_7 || keycode == NUM_9)
+			map->rot_z += 1;
+		if (keycode == NUM_1 || keycode == NUM_3)
+			map->rot_z -= 1;
+		mapify(map, &map->points);
+		rot_x(map->rot_x, map);
+		rot_y(map->rot_y, map);
+		rot_z(map->rot_z, map);
+	}
+	return (0);
 }
 
 void			change_height(int keycode, t_map *map)
@@ -86,10 +107,8 @@ int				keyhook(int keycode, t_map *map)
 		escape();
 	window_new(keycode, map);
 	displacement(keycode, map);
+	rotate(keycode, map);
 	get_scale(keycode, map);
-	/* rot_x(map->rot_x, map);
-	rot_y(map->rot_y, map);
-	rot_z(map->rot_z, map); */
 	center(map, map->curr_width + map->move_x, map->curr_height + map->move_z);
 	draw_map(map);
 	//free_points(cpy);

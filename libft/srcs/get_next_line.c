@@ -6,11 +6,11 @@
 /*   By: jwolf <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/28 16:10:54 by jwolf             #+#    #+#             */
-/*   Updated: 2018/06/22 09:25:55 by jwolf            ###   ########.fr       */
+/*   Updated: 2018/06/28 08:33:24 by jwolf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../includes/libft.h"
 
 static int		copyline(char *line, char *buf)
 {
@@ -27,31 +27,38 @@ static int		copyline(char *line, char *buf)
 	return (1);
 }
 
+static int		do_line(const int fd, char **line, char **buff)
+{
+	char		*temp;
+	int			val;
+
+	val = 1;
+	while (!(ft_strchr(*line, '\n')) &&
+			(val = read(fd, buff[fd], BUFF_SIZE)) > 0)
+	{
+		temp = *line;
+		*line = ft_strjoin(*line, buff[fd]);
+		free(temp);
+		if (!*line)
+			return (-1);
+		ft_bzero(buff[fd], BUFF_SIZE);
+	}
+	if (*line[0] != '\0' && val >= 0)
+		return (copyline(*line, buff[fd]));
+	return (val);
+}
+
 int				get_next_line(const int fd, char **line)
 {
-	static char	buff[FD_MAX + 1][BUFF_SIZE + 1] = {"\0"};
-	char		*temp;
-	int			error;
+	static char	*buff[1000000];
 
-	error = 1;
-	if (fd < 0 || fd > FD_MAX || !line || !(*line = ft_strnew(BUFF_SIZE + 1)))
+	if (fd < 0 || read(fd, buff[fd], 0) < 0 || !line ||
+		!(*line = ft_strnew(BUFF_SIZE + 1)))
 		return (-1);
+	if (!buff[fd])
+		buff[fd] = ft_strnew(BUFF_SIZE + 1);
 	if (buff[fd][0] != '\0')
 		*line = ft_strcpy(*line, buff[fd]);
 	ft_bzero(buff[fd], BUFF_SIZE);
-	while (!(ft_strchr(*line, '\n')) && error > 0)
-	{
-		if ((error = read(fd, buff[fd], BUFF_SIZE)) > 0)
-		{
-			temp = *line;
-			*line = ft_strjoin(*line, buff[fd]);
-			free(temp);
-			if (!*line)
-				return (-1);
-			ft_bzero(buff[fd], BUFF_SIZE);
-		}
-	}
-	if (*line[0] != '\0' && error >= 0)
-		return (copyline(*line, buff[fd]));
-	return (error);
+	return (do_line(fd, line, buff));
 }

@@ -26,7 +26,7 @@ t_points		new_point(int x, int y, int z, t_map *map)
 	t_points	new_point;
 
 	new_point.x = x;
-	new_point.y = -z;
+	new_point.y = z;
 	new_point.z = y;
 	if (y > 0)
 	{

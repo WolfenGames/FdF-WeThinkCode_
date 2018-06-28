@@ -74,7 +74,7 @@ void			mapify(t_map *map, t_points ***poofy)
 		strsplit = ft_strsplit(map->map[i], ' ');
 		while (l < map->width)
 		{
-			new[i][l] = new_point(i * MS, ft_atoi(strsplit[l]) * MS, l * MS, map);
+			new[i][l] = new_point(i * MS, ft_atoi(strsplit[l]) * (MS / 10), l * MS, map);
 			l++;
 		}
 		free(strsplit);
