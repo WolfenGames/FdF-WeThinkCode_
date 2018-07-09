@@ -27,6 +27,7 @@ static int		getlc(char *filename)
 	while (get_next_line(fd, &line))
 	{
 		lines++;
+		ft_putendl_c("File Data :: ", line);
 		free(line);
 		line = NULL;
 	}
@@ -80,7 +81,7 @@ t_map			read_map(char *filename)
 	file.height = getlc(filename);
 	file.map = (char **)malloc(sizeof(char *) * file.height);
 	ft_putendl_c("Siphoning file for validity :: ", filename);
-	if (file.height < 1 || file.width < 1)
+	if (file.height <= 1 || file.width < 1)
 	{
 		ft_putendl_i("map->width		:: ", file.width);
 		ft_putendl_i("map->height		:: ", file.height);
