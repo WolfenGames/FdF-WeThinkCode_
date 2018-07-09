@@ -66,7 +66,7 @@ void	translate(t_map *map)
 void	draw_map(t_map *map)
 {
 	translate(map);
- 	rot_x(map->rot_x, map);
+	rot_x(map->rot_x, map);
 	rot_y(map->rot_y, map);
 	rot_z(map->rot_z, map);
 	center(map, map->curr_width + map->move_x, map->curr_height + map->move_y);
