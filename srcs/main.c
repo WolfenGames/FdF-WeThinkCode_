@@ -16,10 +16,10 @@ int				main(int ac, char **argv)
 {
 	t_map		*map;
 
-	map = malloc(sizeof(t_map));
+	map = (t_map *)malloc(sizeof(t_map));
 	ft_putendl("Welcome to the Jungle");
-	*map = load_map(ac, argv, map);
-	mapify(map, &map->points);
+	//*map = load_map(ac, argv, map);
+	//mapify(map, &map->points);
 	map_init(map);
 	return (0);
 }

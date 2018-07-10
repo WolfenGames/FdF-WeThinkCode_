@@ -77,7 +77,7 @@ void				*ft_memset(void	*str, int c, size_t n);
 int					ft_atoi(const char *str);
 int					ft_clearspace(const char *s, int c);
 int					ft_memcmp(const void *str1, const void *str2, size_t n);
-int					ft_rand(int min, int max);
+int					ft_rand(int min, int max, int seed);
 int					ft_strcmp(const char *s1, const char *s2);
 int					ft_strequ(const char *s1, const char *s2);
 int					ft_strncmp(const char *s1, const char *s2, size_t n);

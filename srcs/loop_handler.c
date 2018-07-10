@@ -22,8 +22,8 @@ int     close_hook(int button, t_map *map)
 
 int     loop_hook(t_map *map)
 {
-    mlx_do_key_autorepeaton(map->mlx);
-    center(map, map->curr_width, map->curr_height);
+//  mlx_do_key_autorepeaton(map->mlx);
+    mlx_do_sync(map->mlx);
     mlx_hook(map->window, 17, 0, close_hook, map);
     mlx_hook(map->window, 2, 1L << 0, keyhook, map);
     return (0);

@@ -27,8 +27,8 @@ DIR_S = srcs
 DIR_O = obj
 
 SOURCES = build.c draw_map.c key_handler.c load_file.c \
-			loop_handler.c	main.c map.c points.c value_map.c \
-			window_control.c rotate.c
+			loop_handler.c	main.c map.c points.c \
+			window_control.c rotate.c misc.c
 
 SRCS = $(addprefix $(DIR_S)/,$(SOURCES))
 OBJECTS = $(addprefix $(DIR_O)/,$(SOURCES:.c=.o))
@@ -61,8 +61,7 @@ fclean: clean
 re: fclean clean all
 	@echo "\033[1;31;m[Recompiled]\033[0m"
 
-run: re
-	make clean
+run: $(NAME)
 	./$(NAME) $(FILE)
 
 .PHONY: fclean clean all re

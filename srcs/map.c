@@ -65,26 +65,17 @@ void	translate(t_map *map)
 
 void	draw_map(t_map *map)
 {
-	translate(map);
-	rot_x(map->rot_x, map);
-	rot_y(map->rot_y, map);
-	rot_z(map->rot_z, map);
-	center(map, map->curr_width + map->move_x, map->curr_height + map->move_y);
 	mlx_clear_window(map->mlx, map->window);
-	display(*map);
+	display(map);
 }
 
 void	map_init(t_map *map)
 {
 	map->mlx = mlx_init();
 	map->window = mlx_new_window(map->mlx, DEF_W, DEF_H, "FDF - Standard");
-	mlx_loop_hook(map->mlx, loop_hook, map);
 	map->curr_height = DEF_H;
 	map->curr_width = DEF_W;
-	map->rot_x = 90;
-	map->rot_y = 45;
-	map->rot_z = 60;
+	mlx_loop_hook(map->mlx, loop_hook, map);
 	draw_map(map);
-	mlx_do_sync(map->mlx);
 	mlx_loop(map->mlx);
 }

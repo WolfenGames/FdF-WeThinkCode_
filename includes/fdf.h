@@ -6,7 +6,7 @@
 /*   By: jwolf <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/06 09:50:00 by jwolf             #+#    #+#             */
-/*   Updated: 2018/07/09 07:45:49 by jwolf            ###   ########.fr       */
+/*   Updated: 2018/07/10 10:42:34 by jwolf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,11 @@ typedef struct		s_map
 {
 	void			*window;
 	void			*mlx;
+	void			*img;
+	void			*data;
+	int				bpp;
+	int				sl;
+	int				endian;
 	t_points		**points;
 	char			**map;
 	float			curr_width;
@@ -88,9 +93,10 @@ typedef struct		s_map
 void				center(t_map *map, int x, int y);
 void    			do_rot(t_map *map);
 void				draw_map(t_map *map);
-void				display(t_map map);
+void				display(t_map *map);
 void				escape(void);
 void				free_points(t_map map);
+void				new_image(t_map *map);
 void				map_init(t_map *map);
 void				mapify(t_map *map, t_points ***poofy);
 void				mapify_y(t_map *map, t_points ***poofy, float y);

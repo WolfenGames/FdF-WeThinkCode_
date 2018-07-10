@@ -12,19 +12,26 @@
 
 #include "../includes/libft.h"
 
-int     ft_rand(int min, int max)
+int     ft_rand(int min, int max, int seed)
 {
-    int     n;
-    int     rng;
+    int     i;
+    int     cpy;
+    int     num;
+    int     res;
 
-    n = (int)&rng;
-    n = (n < 0) ? -n : n;
-    rng = 0;
-    while (n >= 10)
+    i = 0;
+    res = 0;
+    num = (long)malloc(sizeof(long));
+    if (num < 0)
+        num = -num;
+    cpy = num;
+    while (num >= 10)
     {
-        rng += (n % 10);
-        n /= 10;
-    }    
-    rng = (rng % (max - min + 1)) + min;
-    return (rng);
+        res += (num % 10);
+        num /= 10;
+        i++;
+    }
+    res = res * seed + cpy + i;
+    res = ((res % (max + 1)) + min);
+    return (res);
 }

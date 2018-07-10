@@ -12,24 +12,6 @@
 
 #include "../includes/fdf.h"
 
-void	debug_strings(t_map map)
-{
-	mlx_string_put(map.mlx, map.window, 10, 10, 0xFF00FF,
-			ft_strjoin("Pixels :: ", ft_itoa(map.pixels)));
-	mlx_string_put(map.mlx, map.window, 10, 30, C_GREEN,
-			ft_strjoin("Scale  :: ", ft_itoa(map.scale)));
-	mlx_string_put(map.mlx, map.window, 10, 50, C_GREEN,
-			ft_strjoin("Pos X  :: ", ft_itoa(map.map_x)));
-	mlx_string_put(map.mlx, map.window, 10, 70, C_GREEN,
-			ft_strjoin("Pos Y  :: ", ft_itoa(map.map_y)));
-	mlx_string_put(map.mlx, map.window, 10, 90, C_GREEN,
-			ft_strjoin("Pos Z  :: ", ft_itoa(map.map_z)));
-	mlx_string_put(map.mlx, map.window, 10, 110, C_RED,
-			ft_strjoin("Map H  :: ", ft_itoa(map.height)));
-	mlx_string_put(map.mlx, map.window, 10, 130, C_RED,
-			ft_strjoin("Map W  :: ", ft_itoa(map.width)));
-}
-
 void	line(t_points p1, t_points p2, t_map *map)
 {
 	double		steps;
@@ -61,31 +43,41 @@ void	line(t_points p1, t_points p2, t_map *map)
 	{
 		sum.x = p1.x + i * (p2.x - p1.x);
 		sum.z = p1.z + i * (p2.z - p1.z);
-		mlx_pixel_put(map->mlx, map->window, sum.x, sum.z, col);
+		*(unsigned int *)(map->data + ((int)sum.x * map->bpp) +
+			((int)sum.y * map->sl)) = col;
 		map->pixels++;
 		i += steps;
 	}
 }
 
-void	display(t_map map)
+void	put_pixel(int x, int y, t_map *map)
+{
+	if ((x < map->curr_height) && (y < map->curr_width))
+		*(unsigned int *)(map->data + (x * map->bpp) + (y * map->sl)) =
+			get_color(x + y + 1);
+}
+
+void	display(t_map *map)
 {
 	int		i;
 	int		j;
 
-	map.pixels = 0;
+	map->pixels = 0;
+	new_image(map);
 	i = 0;
-	while (i < map.height)
+	while (i < map->curr_width)
 	{
 		j = 0;
-		while (j < map.width)
+		while (j < map->curr_height)
 		{
-			if (i + 1 < map.height)
-				line(map.points[i][j], map.points[i + 1][j], &map);
-			if (j + 1 < map.width)
-				line(map.points[i][j], map.points[i][j + 1], &map);
+			/* if (i + 1 < map->height)
+				line(map->points[i][j], map->points[i + 1][j], map);
+			if (j + 1 < map->width)
+				line(map->points[i][j], map->points[i][j + 1], map); */
+			put_pixel(i, j, map);
 			j++;
 		}
 		i++;
 	}
-	debug_strings(map);
+	mlx_put_image_to_window(map->mlx, map->window, map->img, 0, 0);
 }

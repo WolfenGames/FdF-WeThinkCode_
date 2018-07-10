@@ -106,11 +106,6 @@ int				keyhook(int keycode, t_map *map)
 	if (keycode == ESC)
 		escape();
 	window_new(keycode, map);
-	displacement(keycode, map);
-	rotate(keycode, map);
-	get_scale(keycode, map);
-	center(map, map->curr_width + map->move_x, map->curr_height + map->move_z);
-	draw_map(map);
-	//free_points(cpy);
+	//draw_map(map);
 	return (0);
 }
