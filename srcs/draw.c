@@ -43,7 +43,10 @@ int    draw(t_map *m)
         y = 0;
         while (y < m->wi.c_h)
         {
-            put_pixel(x, y, get_color(x + y + 1), m);
+            if ((int)(x + y) % (int)m->scl == 0)
+                put_pixel(x, y, 0xFFFFFF, m);
+            else
+                put_pixel(x, y, 0xFF00FF, m);
             y++;
         }
         x++;
