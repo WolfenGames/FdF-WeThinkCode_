@@ -22,7 +22,7 @@ t_map   *window_init(char *m_n)
     m->wi.c_w = DEF_W;
     m->mlx = mlx_init();
     m->win = mlx_new_window(m->mlx, m->wi.c_w, m->wi.c_h, m->wi.wn);
-    m->m = load_file(m_n);
+    *m = load_file(m_n, m);
     m->mv_x = 0;
     m->mv_y = 0;
     m->scl = 1;

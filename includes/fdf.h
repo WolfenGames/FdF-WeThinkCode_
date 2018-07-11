@@ -44,6 +44,8 @@
 # define MS				map->scale
 # define MP				map->points
 
+# define ESCAPE_YODA	"Hmmm... Fucked up you did"
+
 # include <mlx.h>
 # include <math.h>
 # include "../libft/includes/libft.h"
@@ -68,7 +70,7 @@ typedef struct		s_map
 	void			*mlx;
 	void			*img;
 	void			*dat;
-	char			*m;
+	char			**m;
 	int				bpp;
 	int				sl;
 	int				endn;
@@ -91,7 +93,7 @@ typedef struct		s_map
 
 t_map				*window_init(char *m_n);
 
-char				*load_file(char *f);
+t_map				load_file(char *f, t_map *m);
 
 int					keyhook(int keycode, t_map *m);
 int					buttonhook(int button, t_map *m);

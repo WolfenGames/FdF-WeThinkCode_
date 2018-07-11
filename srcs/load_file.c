@@ -12,23 +12,53 @@
 
 #include "../includes/fdf.h"
 
-char    *load_file(char *f)
+static int  get_lc(char *f)
 {
     int     fd;
-    char    *line;
-    char    *save;
-    char    *temp;
+    int     l;
+    char    *dat;
 
-    fd = open(f, O_RDONLY);
-    if (fd < 2)
-        exit(1);
-    while (get_next_line(fd, &line))
+    l = 0;
+    if (!(fd = open(f, O_RDONLY)))
     {
-        temp = line;
-        ft_strjoin(save, line);
-        free(line);
+        ft_putendl(ESCAPE_YODA);
+        exit(2);
     }
-    if (line)
-        free(line);
-    return (save);
+    while (get_next_line(fd, &dat) > 0)
+    {
+        l++;
+        free(dat);
+        dat = NULL;
+    }
+    if (dat)
+        free(dat);
+    close(fd);
+    return (l);
+}
+
+t_map       load_file(char *f, t_map *m)
+{
+    char    *dat;
+    int     fd;
+    int     i;
+    t_map   file;
+
+    file = *m;
+    i = 0;
+    if (!(fd = open(f, O_RDONLY)))
+    {
+        ft_putendl(ESCAPE_YODA);
+        exit(3);
+    }
+    file.h = get_lc(f);
+    file.m = (char **)malloc(sizeof(char *) * file.h);
+    while (i < file.h)
+    {
+        get_next_line(fd, &dat);
+        file.m[i++] = dat;
+        ft_putendl_c("Line :: ", dat);
+    }
+    file.w = ft_strlen(file.m[0]);
+    close(fd);
+    return (file);
 }

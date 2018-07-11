@@ -14,8 +14,15 @@
 
 void	ft_putendl_c(char const *dest, char const *str)
 {
+	char	*temp;
+	
+	temp = NULL;
 	if (dest && str)
-		ft_putendl(ft_strjoin(dest, str));
+	{
+		temp = ft_strjoin(dest, str);
+		ft_putendl(temp);
+		free(temp);
+	}
 	else if (!str)
 		ft_putendl(ft_strjoin(dest, "No string passed"));
 }

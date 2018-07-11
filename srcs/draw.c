@@ -29,24 +29,24 @@ void    put_pixel(int x, int y, int col, t_map *m)
 
 int    draw(t_map *m)
 {
-    int     xc;
-    int     x;
-    int     yc;
-    int     y;
+    double  xc;
+    double  x;
+    double  yc;
+    double  y;
 
     xc = m->wi.c_w / 2;
     yc = m->wi.c_h / 2;
     new_image(m);
     x = 0;
-    while (x++ < 850)
+    while (x++ < m->wi.c_w)
     {
         y = 0;
-        while (y++ < 500)
+        while (y++ < m->wi.c_h)
         {
-            put_pixel(x * m->scl, y * m->scl, 0xFF00FF, m);
+            put_pixel(x, y, 0xFF00FF, m);
         }
-        x++;
     }
     mlx_put_image_to_window(m->mlx, m->win, m->img, 0, 0);
+    mlx_destroy_image(m->mlx, m->img);
     return (0);
 }
