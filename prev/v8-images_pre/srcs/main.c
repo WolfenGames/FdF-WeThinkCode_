@@ -5,21 +5,21 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jwolf <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/07/10 14:43:47 by jwolf             #+#    #+#             */
-/*   Updated: 2018/07/10 14:43:48 by jwolf            ###   ########.fr       */
+/*   Created: 2018/06/07 07:29:14 by jwolf             #+#    #+#             */
+/*   Updated: 2018/06/08 11:33:46 by jwolf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
 
-int     main(int ac, char **av)
+int				main(int ac, char **argv)
 {
-    t_map   *m;
+	t_map		*map;
 
-    if (ac == 2)
-    {
-        m = window_init(av[1]);
-        mlx_loop(m->mlx);
-    }
-    return (0);
+	map = (t_map *)malloc(sizeof(t_map));
+	ft_putendl("Welcome to the Jungle");
+	//*map = load_map(ac, argv, map);
+	//mapify(map, &map->points);
+	map_init(map);
+	return (0);
 }
