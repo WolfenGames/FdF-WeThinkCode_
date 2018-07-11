@@ -1,25 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putendl_i_fd.c                                  :+:      :+:    :+:   */
+/*   misc.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jwolf <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/06/07 17:06:07 by jwolf             #+#    #+#             */
-/*   Updated: 2018/06/11 09:20:03 by jwolf            ###   ########.fr       */
+/*   Created: 2018/07/11 16:11:00 by jwolf             #+#    #+#             */
+/*   Updated: 2018/07/11 16:11:02 by jwolf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/libft.h"
+#include "../includes/fdf.h"
 
-void	ft_putendl_i_fd(char const *str, int a, int fd)
+int     get_color(int seed)
 {
-	char	*temp;
-	char	*at;
+    int     r;
+    int     g;
+    int     b;
 
-	at = ft_itoa(a);
-	temp = ft_strjoin(str, at);
-	free(at);
-	ft_putendl(temp);
-	free(temp);
+    r = ft_rand(0, 255, seed);
+    g = ft_rand(0, 255, seed);
+    b = ft_rand(0, 255, seed);
+    return (((r & 0xff) << 16) + ((g & 0xff) << 8) + (b & 0xff));
 }

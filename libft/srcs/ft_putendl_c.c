@@ -24,5 +24,9 @@ void	ft_putendl_c(char const *dest, char const *str)
 		free(temp);
 	}
 	else if (!str)
-		ft_putendl(ft_strjoin(dest, "No string passed"));
+	{
+		temp = ft_strjoin(dest, "No string passed");
+		ft_putendl(temp);
+		free(temp);
+	}
 }

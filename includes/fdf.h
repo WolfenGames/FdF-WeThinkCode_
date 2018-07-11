@@ -99,5 +99,5 @@ int					keyhook(int keycode, t_map *m);
 int					buttonhook(int button, t_map *m);
 
 int					draw(t_map *m);
-
+int					get_color(int seed);
 #endif

@@ -21,10 +21,10 @@ void    new_image(t_map *m)
 
 void    put_pixel(int x, int y, int col, t_map *m)
 {
-    x += m->mv_x;
-    y += m->mv_y;
-    if (x >= 0 && y >= 0 && y < m->wi.c_h && x < m->wi.c_w)
-        *(unsigned int *)(m->dat + (x * m->bpp) + (y * m->sl)) = col;
+    //x += m->mv_x;
+    //y += m->mv_y;
+    *(unsigned int *)(m->dat + (x * m->bpp) + (y * m->sl)) = col;
+
 }
 
 int    draw(t_map *m)
@@ -38,13 +38,15 @@ int    draw(t_map *m)
     yc = m->wi.c_h / 2;
     new_image(m);
     x = 0;
-    while (x++ < m->wi.c_w)
+    while (x < m->wi.c_w)
     {
         y = 0;
-        while (y++ < m->wi.c_h)
+        while (y < m->wi.c_h)
         {
-            put_pixel(x, y, 0xFF00FF, m);
+            put_pixel(x, y, get_color(x + y + 1), m);
+            y++;
         }
+        x++;
     }
     mlx_put_image_to_window(m->mlx, m->win, m->img, 0, 0);
     mlx_destroy_image(m->mlx, m->img);
