@@ -35,7 +35,26 @@ static int  get_lc(char *f)
     close(fd);
     return (l);
 }
+int         count(char *s)
+{
+    int     i;
+    int     c;
 
+    i = 0;
+    c = 0;
+    while (s[i] != '\0')
+    {
+        if (ft_isdigit(s[i]))
+        {
+            c++;
+            while (ft_isdigit(s[i] && s[i]))
+                i++;
+        }
+        i++;
+    }
+    return (c);
+    
+}
 t_map       load_file(char *f, t_map *m)
 {
     char    *dat;
@@ -56,9 +75,12 @@ t_map       load_file(char *f, t_map *m)
     {
         get_next_line(fd, &dat);
         file.m[i++] = dat;
-        ft_putendl_c("Line :: ", dat);
+        if (i % 10 == 0)
+            ft_putendl("Saving and reading, dont panick, have a smoke.");
     }
-    file.w = ft_strlen(file.m[0]);
+    file.w = count(file.m[0]);
+    if (file.h <= 1 && file.w <= 1)
+        exit(4);
     close(fd);
     return (file);
 }

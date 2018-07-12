@@ -14,12 +14,11 @@
 
 int     main(int ac, char **av)
 {
-    t_map   *m;
-
     if (ac == 2)
     {
-        m = window_init(av[1]);
-        mlx_loop(m->mlx);
+        /* if (!ft_strcmp(ft_strrchr(av[1], '.'), "fdf"))
+            exit(3); */
+        window_init(av[1]);
     }
     return (0);
 }

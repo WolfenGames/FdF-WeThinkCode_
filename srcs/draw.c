@@ -21,32 +21,40 @@ void    new_image(t_map *m)
 
 void    put_pixel(int x, int y, int col, t_map *m)
 {
-    //x += m->mv_x;
-    //y += m->mv_y;
     *(unsigned int *)(m->dat + (x * m->bpp) + (y * m->sl)) = col;
-
 }
 
-int    draw(t_map *m)
+void    show_map(int x, int y, t_map *m)
 {
-    double  xc;
+    int     i;
+    int     j;
+
+    i = 0;
+    while (i < m->w)
+    {
+        j = 0;
+        while (j < m->h)
+        {
+            put_pixel(i + x, j + y, 0x0000FF, m);
+            j++;
+        }
+        i++;
+    }
+}
+
+int     draw(t_map *m)
+{
     double  x;
-    double  yc;
     double  y;
 
-    xc = m->wi.c_w / 2;
-    yc = m->wi.c_h / 2;
     new_image(m);
     x = 0;
-    while (x < m->wi.c_w)
+    while (x < m->h)
     {
         y = 0;
-        while (y < m->wi.c_h)
+        while (y < m->w)
         {
-            if ((int)(x + y) % (int)m->scl == 0)
-                put_pixel(x, y, 0xFFFFFF, m);
-            else
-                put_pixel(x, y, 0xFF00FF, m);
+            //put_pixel(x, y, 0x0000FF, m);
             y++;
         }
         x++;

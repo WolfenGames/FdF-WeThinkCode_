@@ -91,9 +91,12 @@ typedef struct		s_map
 	t_winfo			wi;
 }					t_map;
 
-t_map				*window_init(char *m_n);
-
 t_map				load_file(char *f, t_map *m);
+
+t_points			new_point(int x, int y, int z, t_map *m);
+
+void				mapify(t_map *m, t_points ***p);
+void				window_init(char *m_n);
 
 int					keyhook(int keycode, t_map *m);
 int					buttonhook(int button, t_map *m);
