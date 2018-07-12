@@ -40,7 +40,7 @@ void    mapify(t_map *m, t_points ***p)
         sp = ft_strsplit(m->m[i], ' ');
         while (l < m->w)
         {
-            np[i][l] = new_point(i, ft_atoi(sp[l]), l, m);
+            np[i][l] = new_point(i * m->scl, ft_atoi(sp[l]) * m->scl, l* m->scl, m);
             l++;
         }
         free(sp);

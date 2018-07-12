@@ -21,7 +21,35 @@ void    new_image(t_map *m)
 
 void    put_pixel(int x, int y, int col, t_map *m)
 {
-    *(unsigned int *)(m->dat + (x * m->bpp) + (y * m->sl)) = col;
+    if (x > 0 && x < m->wi.c_w && y > 0 && y < m->wi.c_h)
+        *(unsigned int *)(m->dat + (x * m->bpp) + (y * m->sl)) = col;
+}
+
+void    line(t_points p1, t_points p2, t_map *m)
+{
+    double      s;
+    double      i;
+    int         j;
+    t_points    sum;
+
+    i = 0;
+    j = 0;
+    s = (float)pow(fmax(
+                fabs((double)(p1.x - p2.x)),
+                fabs((double)(p1.z - p2.z))), -1);
+    while (i <= 1)
+    {
+        sum.x = p1.x + i * (p2.x - p1.x);
+        sum.z = p1.z + i * (p2.z - p1.z);
+        if (j % 2 == 0)
+            put_pixel(sum.x, sum.z, 0x00FF00, m);
+        if (j % 3 == 0)
+            put_pixel(sum.x, sum.z, 0xFF0000, m);
+        if (j % 4 == 0)
+            put_pixel(sum.x, sum.z, 0x0000FF, m);
+        i += s;
+        j++;
+    }
 }
 
 void    show_map(int x, int y, t_map *m)
@@ -44,8 +72,8 @@ void    show_map(int x, int y, t_map *m)
 
 int     draw(t_map *m)
 {
-    double  x;
-    double  y;
+    int  x;
+    int  y;
 
     new_image(m);
     x = 0;
@@ -54,7 +82,10 @@ int     draw(t_map *m)
         y = 0;
         while (y < m->w)
         {
-            put_pixel(x, y, 0x0000FF, m);
+            if (x + 1 < m->h)
+                line(m->pnts[x][y], m->pnts[x + 1][y], m);
+            if (y + 1 < m->w)
+                line(m->pnts[x][y], m->pnts[x][y + 1], m);
             y++;
         }
         x++;

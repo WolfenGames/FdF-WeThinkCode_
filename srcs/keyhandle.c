@@ -17,35 +17,19 @@ int     keyhook(int keycode, t_map *m)
     if (keycode == ESC)
         exit(0);
     if (keycode == ARROW_LEFT)
-    {
         m->mv_x -= 1;
-        draw(m);
-    }
     if (keycode == ARROW_RIGHT)
-    {
         m->mv_x += 1;
-        draw(m);
-    }
     if (keycode == ARROW_UP)
-    {
         m->mv_y -= 1;
-        draw(m);
-    }
     if (keycode == ARROW_DOWN)
-    {
         m->mv_y += 1;
-        draw(m);
-    }
     if (keycode == NUM_PLUS)
-    {
         m->scl += 1;
-        draw(m);
-    }
     if (keycode == NUM_MINUS && m->scl > 1)
-    {
         m->scl -= 1;
-        draw(m);
-    }
+    mapify(m, &m->pnts);
+    draw(m);
     return (0);
 }
 
