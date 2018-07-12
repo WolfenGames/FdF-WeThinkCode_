@@ -54,7 +54,7 @@ int     draw(t_map *m)
         y = 0;
         while (y < m->w)
         {
-            //put_pixel(x, y, 0x0000FF, m);
+            put_pixel(x, y, 0x0000FF, m);
             y++;
         }
         x++;
