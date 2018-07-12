@@ -26,7 +26,8 @@ DIR_S = srcs
 
 DIR_O = obj
 
-SOURCES = draw.c keyhandle.c load_file.c main.c misc.c window.c map.c
+SOURCES = draw.c keyhandle.c load_file.c main.c misc.c window.c map.c \
+			rotate.c
 
 SRCS = $(addprefix $(DIR_S)/,$(SOURCES))
 OBJECTS = $(addprefix $(DIR_O)/,$(SOURCES:.c=.o))

@@ -47,11 +47,13 @@ int         count(char *s)
         if (ft_isdigit(s[i]))
         {
             c++;
-            while (ft_isdigit(s[i] && s[i]))
+            while (ft_isdigit(s[i]) && s[i])
                 i++;
         }
-        i++;
+        else
+            i++;
     }
+    ft_putendl_i("Count ", c);
     return (c);
     
 }

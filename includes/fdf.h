@@ -77,15 +77,16 @@ typedef struct		s_map
 	int				m_y;
 	int				m_x;
 	int				m_z;
-	int				mv_x;
-	int				mv_y;
-	int				mv_z;
+	float			mv_x;
+	float			mv_y;
+	float			mv_z;
 	int				w;
 	int				h;
 	int				pix;
 	float			r_x;
 	float			r_y;
 	float			r_z;
+	float			ang;
 	float			scl;
 	t_points		**pnts;
 	t_winfo			wi;
@@ -95,7 +96,11 @@ t_map				load_file(char *f, t_map *m);
 
 t_points			new_point(int x, int y, int z, t_map *m);
 
+void				free_points(t_map map);
 void				mapify(t_map *m, t_points ***p);
+void				rot_x(float angle, t_map *map);
+void				rot_y(float angle, t_map *map);
+void				rot_z(float angle, t_map *map);
 void				window_init(char *m_n);
 
 int					keyhook(int keycode, t_map *m);

@@ -21,15 +21,15 @@ void    rot_x(float angle, t_map *map)
 
     i = 0;
     angle = angle * (M_PI / 180);
-    while (i < map->height)
+    while (i < map->h)
     {
         j = 0;
-        while (j < map->width)
+        while (j < map->w)
         {
-            y1 = map->points[i][j].z * cos(angle) - map->points[i][j].y * sin(angle);
-            z1 = map->points[i][j].y * cos(angle) + map->points[i][j].z * sin(angle);
-            map->points[i][j].z = z1;
-            map->points[i][j].y = y1;
+            y1 = map->pnts[i][j].z * cos(angle) - map->pnts[i][j].y * sin(angle);
+            z1 = map->pnts[i][j].y * cos(angle) + map->pnts[i][j].z * sin(angle);
+            map->pnts[i][j].z = z1;
+            map->pnts[i][j].y = y1;
             j++;
         }
         i++;
@@ -45,15 +45,15 @@ void    rot_y(float angle, t_map *map)
 
     i = 0;
     angle = angle * (M_PI / 180);
-    while (i < map->height)
+    while (i < map->h)
     {
         j = 0;
-        while (j < map->width)
+        while (j < map->w)
         {
-            x1 = map->points[i][j].z * cos(angle) + map->points[i][j].x * sin(angle);
-            z1 = map->points[i][j].x * cos(angle) - map->points[i][j].z * sin(angle);
-            map->points[i][j].z = z1;
-            map->points[i][j].x = x1;
+            x1 = map->pnts[i][j].z * cos(angle) + map->pnts[i][j].x * sin(angle);
+            z1 = map->pnts[i][j].x * cos(angle) - map->pnts[i][j].z * sin(angle);
+            map->pnts[i][j].z = z1;
+            map->pnts[i][j].x = x1;
             j++;
         }
         i++;
@@ -69,15 +69,15 @@ void    rot_z(float angle, t_map *map)
 
     i = 0;
     angle = angle * (M_PI / 180);
-    while (i < map->height)
+    while (i < map->h)
     {
         j = 0;
-        while (j < map->width)
+        while (j < map->w)
         {
-            x1 = map->points[i][j].y * cos(angle) - map->points[i][j].x * sin(angle);
-            y1 = map->points[i][j].y * sin(angle) + map->points[i][j].x * cos(angle);
-            map->points[i][j].x = x1;
-            map->points[i][j].y = y1;
+            x1 = map->pnts[i][j].y * cos(angle) - map->pnts[i][j].x * sin(angle);
+            y1 = map->pnts[i][j].y * sin(angle) + map->pnts[i][j].x * cos(angle);
+            map->pnts[i][j].x = x1;
+            map->pnts[i][j].y = y1;
             j++;
         }
         i++;

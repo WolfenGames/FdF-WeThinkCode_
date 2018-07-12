@@ -15,36 +15,50 @@
 t_points    new_point(int x, int y, int z, t_map *m)
 {
     t_points p;
-
+    
     p.x = x;
-    p.y = y;
+    p.y = -y;
     p.z = z;
-    p.m = FALSE;
-    p.c = 0x0000FF;
+    p.m = (y > 1) ? TRUE : FALSE;
+    p.c = 0x0000000;
     return (p);
+}
+
+void    free_points(t_map map)
+{
+    long int    i;
+
+    i = -1;
+    while (++i < map.h)
+    {
+        free(map.pnts[i]);
+    }
+    free(map.pnts);
+    map.pnts = NULL;
 }
 
 void    mapify(t_map *m, t_points ***p)
 {
-    long int    i;
-    long int    l;
+    long int    x;
+    long int    y;
     char        **sp;
     t_points    **np;
+    t_points    *t;
 
-    i = 0;
+    x = 0;
     np = (t_points **)malloc(sizeof(t_points) * m->h);
-    while (i < m->h)
+    while (x < m->h)
     {
-        np[i] = (t_points *)malloc(sizeof(t_points) * m->w);
-        l = 0;
-        sp = ft_strsplit(m->m[i], ' ');
-        while (l < m->w)
+        np[x] = (t_points *)malloc(sizeof(t_points) * m->w);
+        y = 0;
+        sp = ft_strsplit(m->m[x], ' ');
+        while (y < m->w)
         {
-            np[i][l] = new_point(i * m->scl, ft_atoi(sp[l]) * m->scl, l* m->scl, m);
-            l++;
+            np[x][y] = new_point(x * m->scl, ft_atoi(sp[y]) * (m->scl / 4), y * m->scl,  m);
+            y++;
         }
         free(sp);
-        i++;
+        x++;
     }
     *p = np;
 }
