@@ -21,10 +21,10 @@ void    rotate(t_map *m)
 
 int     rot(t_map *m)
 {
-    mapify(m, &m->pnts);
+//    mapify(m, &m->pnts);
     rotate(m);
     draw(m);
-    free_points(*m);
+//    free_points(*m);
     return (0);
 }
 
