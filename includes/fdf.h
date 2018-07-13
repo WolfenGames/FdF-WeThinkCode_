@@ -34,6 +34,7 @@
 # define NUM_3			85
 # define NUM_2			84
 # define NUM_4			86
+# define NUM_5			87
 # define NUM_6			88
 # define NUM_7			89
 # define NUM_9			92
@@ -105,4 +106,5 @@ int					buttonhook(int button, t_map *m);
 
 int					draw(t_map *m);
 int					get_color(t_map *m, double y);
+int     			rot(t_map *m);
 #endif

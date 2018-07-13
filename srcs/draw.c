@@ -33,7 +33,6 @@ void    line(t_points p1, t_points p2, t_map *m)
 {
     double      s;
     double      i;
-    int         c;
     t_points    sum;
 
     i = 0;
@@ -60,9 +59,19 @@ void    line(t_points p1, t_points p2, t_map *m)
 
 void    debug_info(t_map *m)
 {
-    mlx_string_put(m->mlx, m->win, 10, 10, 0xFF00FF, ft_strjoin("ROT_X  :: ", ft_itoa(m->r_x)));
-    mlx_string_put(m->mlx, m->win, 10, 40, 0xFF00FF, ft_strjoin("ROT_Y  :: ", ft_itoa(m->r_y)));
-    mlx_string_put(m->mlx, m->win, 10, 70, 0xFF00FF, ft_strjoin("ROT_Z  :: ", ft_itoa(m->r_z)));
+    int     x;
+    int     y;
+    int     z;
+
+    x = ABS(m->r_x);
+    y = ABS(m->r_y);
+    z = ABS(m->r_z);
+    mlx_string_put(m->mlx, m->win, 10, 10, 0xFF00FF,
+                    ft_strjoin("ROT_X  :: ", ft_itoa(x)));
+    mlx_string_put(m->mlx, m->win, 10, 40, 0xFF00FF,
+                    ft_strjoin("ROT_Y  :: ", ft_itoa(y)));
+    mlx_string_put(m->mlx, m->win, 10, 70, 0xFF00FF,
+                    ft_strjoin("ROT_Z  :: ", ft_itoa(z)));
 }
 
 int     draw(t_map *m)
@@ -87,6 +96,7 @@ int     draw(t_map *m)
         x++;
     }
     mlx_put_image_to_window(m->mlx, m->win, m->img, 0, 0);
+//    free(m->dat);
     mlx_destroy_image(m->mlx, m->img);
     debug_info(m);
     return (0);

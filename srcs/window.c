@@ -31,12 +31,10 @@ void    window_init(char *m_n)
     m->r_x = 0;
     m->r_y = -37;
     m->r_z = -22;
-    m->ang = 60.f;
-    rot_x(m->r_x, m);
-    rot_y(m->r_y, m);
-    rot_z(m->r_z, m);
-    draw(m);
+    rot(m);
+    mlx_do_key_autorepeaton(m->mlx);
     mlx_hook(m->win, 17, 0, buttonhook, m);
     mlx_hook(m->win, 2, 0, keyhook, m);
-    mlx_loop(m->mlx);
+    mlx_loop(m->mlx); 
+    sleep(20);
 }

@@ -67,7 +67,6 @@ void    mapify(t_map *m, t_points ***p)
     long int    y;
     char        **sp;
     t_points    **np;
-    t_points    *t;
 
     x = 0;
     np = (t_points **)malloc(sizeof(t_points) * m->h);
