@@ -68,7 +68,7 @@ typedef struct		s_map
 {
 	void			*win;
 	void			*mlx;
-	void			*img;
+	void			**img;
 	void			*dat;
 	char			**m;
 	int				bpp;
@@ -77,6 +77,7 @@ typedef struct		s_map
 	int				m_y;
 	int				m_x;
 	int				m_z;
+	int				max_y;
 	float			mv_x;
 	float			mv_y;
 	float			mv_z;
@@ -95,6 +96,7 @@ typedef struct		s_map
 t_map				load_file(char *f, t_map *m);
 
 t_points			new_point(int x, int y, int z, t_map *m);
+t_points			**simulacron(t_map *m);
 
 void				free_points(t_map map);
 void				mapify(t_map *m, t_points ***p);
@@ -107,5 +109,5 @@ int					keyhook(int keycode, t_map *m);
 int					buttonhook(int button, t_map *m);
 
 int					draw(t_map *m);
-int					get_color(int seed);
+int					get_color(t_map *m, double y);
 #endif

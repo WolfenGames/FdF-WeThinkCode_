@@ -56,6 +56,10 @@ int     keyhook(int keycode, t_map *m)
         m->r_x++;
     if (keycode == NUM_4)
         m->r_x--;
+    if (keycode == PG_UP)
+        m->mv_z++;
+    if (keycode == PG_DOWN)
+        m->mv_z--;
     rotate(m);
     draw(m);
     free_points(*m);

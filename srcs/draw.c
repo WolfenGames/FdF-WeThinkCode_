@@ -33,35 +33,36 @@ void    line(t_points p1, t_points p2, t_map *m)
 {
     double      s;
     double      i;
-    int         j;
     int         c;
     t_points    sum;
 
     i = 0;
-    j = 0;
     s = (float)pow(fmax(
                 fabs((double)(p1.x - p2.x)),
                 fabs((double)(p1.z - p2.z))), -1);
-    c = get_color(200);
     while (i <= 1)
     {
         sum.x = p1.x + i * (p2.x - p1.x);
         sum.z = p1.z + i * (p2.z - p1.z);
         if (!p2.m && !p1.m)
         {
-            /* if (j % 2 == 0)
-                put_pixel(sum.x, sum.z, 0x00FF00, m);
-            if (j % 3 == 0)
-                put_pixel(sum.x, sum.z, 0xFF0000, m);
-            if (j % 4 == 0)
-                put_pixel(sum.x, sum.z, 0x0000FF, m); */
-            put_pixel(sum.x, sum.z, c, m);
+            put_pixel(sum.x, sum.z, 0xFF00FF, m);
+        }
+        else if (p1.m && p2.m)
+        {
+            put_pixel(sum.x, sum.z, 0xFFFFFF, m);
         }
         else
-            put_pixel(sum.x, sum.z, 0xFFFFFF, m);
+            put_pixel(sum.x, sum.z, 0x00FFFF, m);
         i += s;
-        j++;
     }
+}
+
+void    debug_info(t_map *m)
+{
+    mlx_string_put(m->mlx, m->win, 10, 10, 0xFF00FF, ft_strjoin("ROT_X  :: ", ft_itoa(m->r_x)));
+    mlx_string_put(m->mlx, m->win, 10, 40, 0xFF00FF, ft_strjoin("ROT_Y  :: ", ft_itoa(m->r_y)));
+    mlx_string_put(m->mlx, m->win, 10, 70, 0xFF00FF, ft_strjoin("ROT_Z  :: ", ft_itoa(m->r_z)));
 }
 
 int     draw(t_map *m)
@@ -69,6 +70,7 @@ int     draw(t_map *m)
     int  x;
     int  y;
 
+    mlx_clear_window(m->mlx, m->win);
     new_image(m);
     x = 0;
     while (x < m->h)
@@ -86,5 +88,6 @@ int     draw(t_map *m)
     }
     mlx_put_image_to_window(m->mlx, m->win, m->img, 0, 0);
     mlx_destroy_image(m->mlx, m->img);
+    debug_info(m);
     return (0);
 }

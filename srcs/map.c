@@ -19,8 +19,10 @@ t_points    new_point(int x, int y, int z, t_map *m)
     p.x = x;
     p.y = -y;
     p.z = z;
-    p.m = (y > 1) ? TRUE : FALSE;
+    p.m = (y != 0) ? TRUE : FALSE;
     p.c = 0x0000000;
+    if (y > m->max_y)
+        m->max_y = y;
     return (p);
 }
 
@@ -35,6 +37,28 @@ void    free_points(t_map map)
     }
     free(map.pnts);
     map.pnts = NULL;
+}
+
+t_points    **simulacron(t_map *m)
+{
+    t_points    **n;
+    long int    x;
+    long int    y;
+
+    x = 0;
+    n = (t_points **)malloc(sizeof(t_points) * m->h);
+    while (x < m->h)
+    {
+        n[x] = (t_points *)malloc(sizeof(t_points) * m->w);
+        y = 0;
+        while (y < m->w)
+        {
+            n[x][y] = m->pnts[x][y];
+            y++;
+        }
+        x++;
+    }
+    return (n);
 }
 
 void    mapify(t_map *m, t_points ***p)
@@ -54,7 +78,7 @@ void    mapify(t_map *m, t_points ***p)
         sp = ft_strsplit(m->m[x], ' ');
         while (y < m->w)
         {
-            np[x][y] = new_point(x * m->scl, ft_atoi(sp[y]) * (m->scl / 4), y * m->scl,  m);
+            np[x][y] = new_point(x * m->scl, ft_atoi(sp[y]) * (m->scl + m->mv_z), y * m->scl,  m);
             y++;
         }
         free(sp);
