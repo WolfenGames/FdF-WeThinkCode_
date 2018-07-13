@@ -39,11 +39,6 @@
 # define NUM_9			92
 # define NUM_8			91
 
-# define DEF_ANGLE		15
-# define MAX_SCALE		50
-# define MS				map->scale
-# define MP				map->points
-
 # define ESCAPE_YODA	"Hmmm... Fucked up you did"
 
 # include <mlx.h>

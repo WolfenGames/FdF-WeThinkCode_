@@ -16,6 +16,7 @@ FILE = maps/42.fdf
 
 CFLAGS += -Wextra -Wall -I./includes
 
+#ATTACH = -L libft/ -lft -L mlx -lmlx -framework OpenGL -framework AppKit
 ATTACH = -L libft/ -lft -lmlx -framework OpenGL -framework AppKit
 
 C = gcc
@@ -38,6 +39,7 @@ $(DIR_O)/%.o:		$(DIR_S)/%.c $(HEADERS)/$(NAME).h
 
 $(NAME): temporary $(OBJECTS)
 	@echo "\033[1;34;m[Making... Pizza]\033[0m"
+#	@make -C mlx
 	@make -C libft
 	$(C) $(CFLAGS) -o $(NAME) $(OBJECTS) $(ATTACH)
 
