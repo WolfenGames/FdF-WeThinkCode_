@@ -1,8 +1,9 @@
 *.o
-/srcs/*.o
+/obj/*.o
 fdf
 *.swp
 /maps/good/*.swp
 /maps/bad/*.swp
 /srcs/*.swp
 /libft/*.a
+/libft/obj/*
