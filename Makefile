@@ -12,7 +12,7 @@
 
 NAME = fdf
 
-FILE = maps/42.fdf
+FILE = maps/good/42.fdf
 
 CFLAGS += -Wextra -Wall -I./includes
 

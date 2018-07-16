@@ -2,5 +2,7 @@
 /srcs/*.o
 fdf
 *.swp
-/maps/*.swp
+/maps/good/*.swp
+/maps/bad/*.swp
 /srcs/*.swp
+/libft/*.a
