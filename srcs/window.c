@@ -12,6 +12,17 @@
 
 #include "../includes/fdf.h"
 
+void	set_hooks(t_map *m)
+{
+	mlx_do_key_autorepeaton(m->mlx);
+	mlx_hook(m->win, 2, 0, key_press_hook, m);
+//	mlx_hook(m->win, 3, 0, key_release_hook, m);
+//	mlx_hook(m->win, 4, 0, mouse_press_hook, m);
+//	mlx_hook(m->win, 5, 0, mouse_release_hook, m);
+//	mlx_hook(m->win, 6, 0, motion_hook, m);
+	mlx_hook(m->win, 17, 0, exit_hook, m);
+}
+
 void    window_init(char *m_n)
 {
     t_map   *m;
@@ -22,19 +33,19 @@ void    window_init(char *m_n)
     m->wi.c_w = DEF_W;
     m->mlx = mlx_init();
     m->win = mlx_new_window(m->mlx, m->wi.c_w, m->wi.c_h, m->wi.wn);
-    m->scl = 20;
-    *m = load_file(m_n, m);
-    mapify(m, &m->pnts);
-    m->mv_x = (m->wi.c_w / 2) - (m->w / 2);
-    m->mv_y = (m->wi.c_h / 2) - (m->h / 2);
+    load_file(m_n, m);
+    m->mv_y = 0;
     m->m_z = 0;
     m->r_x = 0;
     m->r_y = -37;
     m->r_z = -22;
-    rot(m);
-    mlx_do_key_autorepeaton(m->mlx);
-    mlx_hook(m->win, 17, 0, buttonhook, m);
-    mlx_hook(m->win, 2, 0, keyhook, m);
-    mlx_loop(m->mlx); 
-    sleep(20);
+    mapify(m, &m->pnts);
+    m->scl = 20;
+    m->mv_x = 0;// (m->wi.c_w / 2) - (m->w);
+    m->mv_y = 0;//(m->wi.c_h / 2) - (m->h);
+    m->mv_z = 0;
+    rotate(m);
+    draw(m);
+    set_hooks(m);
+    mlx_loop(m->mlx);
 }

@@ -20,7 +20,7 @@ void    rot_x(float angle, t_map *map)
     float   z1;
 
     i = 0;
-    angle = angle * (M_PI / 180);
+    angle = angle * (M_PI / 360);
     while (i < map->h)
     {
         j = 0;
@@ -44,7 +44,7 @@ void    rot_y(float angle, t_map *map)
     float   z1;
 
     i = 0;
-    angle = angle * (M_PI / 180);
+    angle = angle * (M_PI / 360);
     while (i < map->h)
     {
         j = 0;
@@ -68,7 +68,7 @@ void    rot_z(float angle, t_map *map)
     float   y1;
 
     i = 0;
-    angle = angle * (M_PI / 180);
+    angle = angle * (M_PI / 360);
     while (i < map->h)
     {
         j = 0;

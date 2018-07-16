@@ -16,8 +16,8 @@ int     main(int ac, char **av)
 {
     if (ac == 2)
     {
-        /* if (!ft_strcmp(ft_strrchr(av[1], '.'), "fdf"))
-            exit(3); */
+        if (ft_memcmp(ft_strchr(av[1], '.'), ".fdf", 4))
+            exit(3);
         window_init(av[1]);
     }
     return (0);

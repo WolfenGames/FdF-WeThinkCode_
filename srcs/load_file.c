@@ -28,7 +28,6 @@ static int  get_lc(char *f)
     {
         l++;
         free(dat);
-        dat = NULL;
     }
     if (dat)
         free(dat);
@@ -53,36 +52,32 @@ int         count(char *s)
         else
             i++;
     }
-    ft_putendl_i("Count ", c);
     return (c);
     
 }
-t_map       load_file(char *f, t_map *m)
+
+void        load_file(char *f, t_map *m)
 {
     char    *dat;
     int     fd;
     int     i;
-    t_map   file;
 
-    file = *m;
     i = 0;
     if (!(fd = open(f, O_RDONLY)))
     {
         ft_putendl(ESCAPE_YODA);
         exit(3);
     }
-    file.h = get_lc(f);
-    file.m = (char **)malloc(sizeof(char *) * file.h);
-    while (i < file.h)
+    m->h = get_lc(f);
+    m->m = (char **)malloc(sizeof(char *) * m->h);
+    while (i < m->h)
     {
         get_next_line(fd, &dat);
-        file.m[i++] = dat;
-        if (i % 10 == 0)
-            ft_putendl("Saving and reading, dont panick, have a smoke.");
+        m->m[i++] = dat;
+        dat = NULL;
     }
-    file.w = count(file.m[0]);
-    if (file.h <= 1 && file.w <= 1)
+    m->w = count(m->m[0]);
+    if (m->h <= 1 && m->w <= 1)
         exit(4);
     close(fd);
-    return (file);
 }

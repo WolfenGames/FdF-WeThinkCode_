@@ -42,8 +42,13 @@
 
 # define ESCAPE_YODA	"Hmmm... Fucked up you did"
 
+# define CON_ONE		keycode == NUM_1 || keycode == NUM_2 || keycode == NUM_3
+# define CON_TWO		keycode == NUM_4 || keycode == NUM_6
+# define CON_THREE		keycode == NUM_7 || keycode == NUM_8 || keycode == NUM_9
+
 # include <mlx.h>
 # include <math.h>
+# include <stdio.h>
 # include "../libft/includes/libft.h"
 
 typedef struct		s_points
@@ -89,22 +94,28 @@ typedef struct		s_map
 	t_winfo			wi;
 }					t_map;
 
-t_map				load_file(char *f, t_map *m);
+void				load_file(char *f, t_map *m);
 
 t_points			new_point(int x, int y, int z, t_map *m);
 t_points			**simulacron(t_map *m);
 
-void				free_points(t_map map);
+void				free_points(t_map *m, t_points **p);
 void				mapify(t_map *m, t_points ***p);
+void				rotate(t_map *m);
 void				rot_x(float angle, t_map *map);
 void				rot_y(float angle, t_map *map);
 void				rot_z(float angle, t_map *map);
 void				window_init(char *m_n);
 
-int					keyhook(int keycode, t_map *m);
-int					buttonhook(int button, t_map *m);
+int					key_press_hook(int keycode, t_map *m);
+int					key_release_hook(int keycode, t_map *m);
+int					mouse_press_hook(int keycode, t_map *m);
+int					mouse_release_hook(int keycode, t_map *m);
+int					motion_hook(int keycode, t_map *m);
+int					expose_hook(int keycode, t_map *m);
+int					exit_hook(int keycode, t_map *m);
 
 int					draw(t_map *m);
 int					get_color(t_map *m, double y);
-int     			rot(t_map *m);
+int     			rot(int keycode, t_map *m);
 #endif
