@@ -36,8 +36,8 @@ void    window_init(char *m_n)
     m->r_z = 0;
     mapify(m, &m->pnts);
     m->scl = 20;
-    m->mv_x = 0;// (m->wi.c_w / 2) - (m->w);
-    m->mv_y = 0;//(m->wi.c_h / 2) - (m->h);
+    m->mv_x = 0;//(m->wi.c_w / 2) - ((m->w) * m->scl)/2;
+    m->mv_y = 0;//(m->wi.c_h / 2) - ((m->h) * m->scl)/2;
     m->mv_z = 0;
     rotate(m);
     draw(m);

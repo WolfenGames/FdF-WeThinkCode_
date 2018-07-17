@@ -12,17 +12,22 @@
 
 #include "../includes/fdf.h"
 
-t_points    new_point(int x, int y, int z, t_map *m)
+int         get_color_value(const char *s)
 {
-    t_points p;
+    (void)s;
+    return (0xffffff);
+}
+
+t_points    new_point(int x, char *y, int z, t_map *m)
+{
+    t_points    p;
     
     p.x = x;
-    p.y = -y;
+    p.y = ft_atoi(y);
     p.z = z;
-    p.m = (y != 0) ? TRUE : FALSE;
+    p.m = (p.y != 0) ? TRUE : FALSE;
     if (p.m)
         p.y += m->mv_z;
-    p.c = 0x0000000;
     return (p);
 }
 
@@ -55,9 +60,9 @@ void    mapify(t_map *m, t_points ***p)
         sp = ft_strsplit(m->m[x], ' ');
         while (y < m->w)
         {
-            np[x][y] = new_point(x, 
-                        ft_atoi(sp[y]), 
-                        y,  m);
+            if (!sp[y])
+                break ;
+            np[x][y] = new_point(x, sp[y], y, m);
             free(sp[y]);
             y++;
         }

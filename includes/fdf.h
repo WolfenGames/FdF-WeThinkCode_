@@ -96,7 +96,7 @@ typedef struct		s_map
 
 void				load_file(char *f, t_map *m);
 
-t_points			new_point(int x, int y, int z, t_map *m);
+t_points			new_point(int x, char *y, int z, t_map *m);
 t_points			**simulacron(t_map *m);
 
 void				free_points(t_map *m, t_points **p);

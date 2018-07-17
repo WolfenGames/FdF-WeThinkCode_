@@ -56,6 +56,16 @@ int         count(char *s)
     
 }
 
+void        load_file_error(const char  *dat, const int i)
+{
+    if (ft_strlen(dat) == 0 ||
+        (dat[i] == ' ' && dat[i + 1] == ' '))
+    {
+        ft_putendl(dat);
+        exit(8);
+    }
+}
+
 void        load_file(char *f, t_map *m)
 {
     char    *dat;
@@ -73,8 +83,7 @@ void        load_file(char *f, t_map *m)
     while (i < m->h)
     {
         get_next_line(fd, &dat);
-        if (ft_strlen(dat) == 0 || !(ft_isdigit(dat[1])) || !(ft_isdigit(dat[0])))
-            exit(8);
+//        load_file_error(dat, i);
         m->m[i++] = dat;
         dat = NULL;
     }
