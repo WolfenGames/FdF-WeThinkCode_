@@ -73,11 +73,15 @@ void        load_file(char *f, t_map *m)
     while (i < m->h)
     {
         get_next_line(fd, &dat);
+        if (ft_strlen(dat) == 0 || !(ft_isdigit(dat[1])) || !(ft_isdigit(dat[0])))
+            exit(8);
         m->m[i++] = dat;
         dat = NULL;
     }
-    m->w = count(m->m[0]);
-    if (m->h <= 1 && m->w <= 1)
-        exit(4);
     close(fd);
+    m->w = count(m->m[0]);
+    if (m->h < 1 && m->w < 1)
+        exit(4);
+    if (count(m->m[0]) != count(m->m[1]))
+        exit(5);
 }

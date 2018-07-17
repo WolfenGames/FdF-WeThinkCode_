@@ -16,7 +16,7 @@ int     main(int ac, char **av)
 {
     if (ac == 2)
     {
-        if (ft_memcmp(ft_strchr(av[1], '.'), ".fdf", 4))
+        if (ft_strequ(ft_strchr(av[1], '.'), ".fdf") == 0)
             exit(3);
         window_init(av[1]);
     }
