@@ -34,6 +34,7 @@ static int  get_lc(char *f)
     close(fd);
     return (l);
 }
+
 int         count(char *s)
 {
     int     i;
@@ -43,17 +44,23 @@ int         count(char *s)
     c = 0;
     while (s[i] != '\0')
     {
-        if (ft_isdigit(s[i]))
+        if (ft_isdigit(s[i]) && s[i])
         {
             c++;
             while (ft_isdigit(s[i]) && s[i])
                 i++;
+            if (s[i] == ',' && s[i + 1] && s[i + 2] &&
+                s[i + 1] == '0' && s[i + 2] == 'x')
+            {
+                i += 3;
+                while (ft_ishex(s[i])&& s[i])
+                    i++;
+            }
         }
         else
             i++;
     }
     return (c);
-    
 }
 
 void        load_file_error(const char  *dat, const int i)
@@ -83,7 +90,6 @@ void        load_file(char *f, t_map *m)
     while (i < m->h)
     {
         get_next_line(fd, &dat);
-//        load_file_error(dat, i);
         m->m[i++] = dat;
         dat = NULL;
     }

@@ -21,13 +21,18 @@ int         get_color_value(const char *s)
 t_points    new_point(int x, char *y, int z, t_map *m)
 {
     t_points    p;
-    
-    p.x = x;
+    char *found;
+
+    p.z = x - (m->h / 2);
     p.y = ft_atoi(y);
-    p.z = z;
-    p.m = (p.y != 0) ? TRUE : FALSE;
-    if (p.m)
-        p.y += m->mv_z;
+    p.x = z - (m->w / 2);
+    found = ft_strchr(y, 'x');
+    if (found)
+    {
+        p.c = ft_atoi_base(found + 1, 16);
+    }
+    else
+        p.c = (p.y > 1) ? 0xFF00FF : 0xFFFF00;
     return (p);
 }
 
@@ -60,8 +65,6 @@ void    mapify(t_map *m, t_points ***p)
         sp = ft_strsplit(m->m[x], ' ');
         while (y < m->w)
         {
-            if (!sp[y])
-                break ;
             np[x][y] = new_point(x, sp[y], y, m);
             free(sp[y]);
             y++;

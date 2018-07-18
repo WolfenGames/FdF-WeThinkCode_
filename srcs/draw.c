@@ -12,6 +12,27 @@
 
 #include "../includes/fdf.h"
 
+int     colour_grad(int col1, int col2, float r)
+{
+    float   b_col1[3];
+    float   b_col2[3];
+    int     ret;
+
+    b_col1[0] = (col1 & 0xff0000) / 0x10000;
+    b_col1[1] = (col1 & 0xff00) / 0x100;
+    b_col1[2] = (col1 & 0xff);
+
+    b_col2[0] = (col2 & 0xff0000) / 0x10000;
+    b_col2[1] = (col2 & 0xff00) / 0x100;
+    b_col2[2] = (col2 & 0xff);
+    ret = b_col2[0] * r + b_col1[0] * (1 - r);
+    ret *= 0x100;
+    ret += b_col2[1] * r + b_col1[1] * (1 - r);
+    ret *= 0x100;
+    ret += b_col2[2] * r + b_col1[2] * (1 - r);
+    return (ret);
+}
+
 void    new_image(t_map *m)
 {
     m->img = mlx_new_image(m->mlx, m->wi.c_w, m->wi.c_h);
@@ -47,27 +68,7 @@ void    line(t_points p1, t_points p2, t_map *m)
     {
         sum.x = p1.x + i * (p2.x - p1.x);
         sum.z = p1.z + i * (p2.z - p1.z);
-        if (!p2.m && !p1.m)
-        {
-            put_pixel(sum.x, sum.z, 0xFF00FF, m);
-        }
-        else if (p1.m && p2.m)
-        {
-            put_pixel(sum.x, sum.z, 0x00FF00, m);
-        }
-        else
-        {
-            int     r;
-            int     b;
-            int     g;
-            int     col;
-
-            r = (i/1) * 125;
-            g = (i/1) * 200;
-            b = (i/1) * 100;
-            col = (((r & 0xff) << 16) + ((g & 0xff) << 8) + (b & 0xff));
-            put_pixel(sum.x, sum.z, col, m);
-        }
+        put_pixel(sum.x, sum.z, colour_grad(p1.c, p2.c, i), m);
         i += s;
     }
 }

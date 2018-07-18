@@ -21,32 +21,30 @@ void    rotate(t_map *m)
 
 void    reset(t_map *m)
 {
-    m->r_x = 0;
-    m->r_y = 37;
-    m->r_z = 22;
+    m->r_x = 10;
+    m->r_y = 10;
+    m->r_z = 10;
 }
 
 int     rot(int keycode, t_map *m)
 {
     if (keycode == NUM_1)
-        m->r_z++;
+        rot_y(10, m);
     if (keycode == NUM_3)
-        m->r_z--;
+        rot_y(-10, m);
     if (keycode == NUM_2)
-        m->r_y--;
+        rot_x(10, m);
     if (keycode == NUM_8)
-        m->r_y++;
+        rot_x(-10, m);
     if (keycode == NUM_6)
-        m->r_x--;
+        rot_z(-10, m);
     if (keycode == NUM_4)
-        m->r_x++;
-    if (keycode == NUM_5)
-        reset(m);
+        rot_z(10, m);
     if (keycode == PG_UP)
         m->mv_z++;
     if (keycode == PG_DOWN)
         m->mv_z--;
-    rotate(m);
+
     return (0);
 }
 
@@ -55,19 +53,17 @@ int     key_press_hook(int keycode, t_map *m)
     if (keycode == ESC)
         exit_hook(keycode, m);
     if (keycode == ARROW_LEFT || keycode == A)
-        m->mv_x -= m->scl / 2;
+        m->mv_x -= 10;
     if (keycode == ARROW_RIGHT || keycode == D)
-        m->mv_x += m->scl / 2;
+        m->mv_x += 10;
     if (keycode == ARROW_UP || keycode == W)
-        m->mv_y -= m->scl / 2;
+        m->mv_y -= 10;
     if (keycode == ARROW_DOWN || keycode == S)
-        m->mv_y += m->scl / 2;
+        m->mv_y += 10;
     if (keycode == NUM_PLUS)
-        m->scl += 0.5f;
-    if (keycode == NUM_MINUS && m->scl > 1)
-        m->scl -= 0.5f;
-    free_points(m, m->pnts);
-    mapify(m, &m->pnts);
+        m->scl *= 2.f;
+    if (keycode == NUM_MINUS && m->scl > 0.01)
+        m->scl *= 0.5f;
     rot(keycode, m);
     draw(m);
     return (0);

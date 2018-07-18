@@ -20,14 +20,14 @@ void    rot_x(float angle, t_map *map)
     float   z1;
 
     i = 0;
-    angle = angle * (M_PI / 360);
+    angle = angle * (M_PI / 180);
     while (i < map->h)
     {
         j = 0;
         while (j < map->w)
         {
-            y1 = map->pnts[i][j].z * cos(angle) - map->pnts[i][j].y * sin(angle);
-            z1 = map->pnts[i][j].y * cos(angle) + map->pnts[i][j].z * sin(angle);
+            y1 = map->pnts[i][j].y * cos(angle) - map->pnts[i][j].z * sin(angle);
+            z1 = map->pnts[i][j].z * cos(angle) + map->pnts[i][j].y * sin(angle);
             map->pnts[i][j].z = z1;
             map->pnts[i][j].y = y1;
             j++;
@@ -44,14 +44,14 @@ void    rot_y(float angle, t_map *map)
     float   z1;
 
     i = 0;
-    angle = angle * (M_PI / 360);
+    angle *= M_PI / 180;
     while (i < map->h)
     {
         j = 0;
         while (j < map->w)
         {
-            x1 = map->pnts[i][j].z * cos(angle) + map->pnts[i][j].x * sin(angle);
-            z1 = map->pnts[i][j].x * cos(angle) - map->pnts[i][j].z * sin(angle);
+            x1 = map->pnts[i][j].x * cos(angle) + map->pnts[i][j].z * sin(angle);
+            z1 = map->pnts[i][j].z * cos(angle) - map->pnts[i][j].x * sin(angle);
             map->pnts[i][j].z = z1;
             map->pnts[i][j].x = x1;
             j++;
@@ -68,14 +68,14 @@ void    rot_z(float angle, t_map *map)
     float   y1;
 
     i = 0;
-    angle = angle * (M_PI / 360);
+    angle = angle * (M_PI / 180);
     while (i < map->h)
     {
         j = 0;
         while (j < map->w)
         {
-            x1 = map->pnts[i][j].y * cos(angle) - map->pnts[i][j].x * sin(angle);
-            y1 = map->pnts[i][j].y * sin(angle) + map->pnts[i][j].x * cos(angle);
+            x1 = map->pnts[i][j].x * cos(angle) - map->pnts[i][j].y * sin(angle);
+            y1 = map->pnts[i][j].x * sin(angle) + map->pnts[i][j].y * cos(angle);
             map->pnts[i][j].x = x1;
             map->pnts[i][j].y = y1;
             j++;

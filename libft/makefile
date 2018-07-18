@@ -32,14 +32,14 @@ SOURCES = ft_atoi.c ft_bzero.c ft_clearspace.c ft_intminmax.c ft_isalnum.c \
 			ft_memset.c ft_print_memory.c ft_putchar_fd.c ft_putchar.c \
 			ft_putendl_c.c ft_putendl_fd.c ft_putendl_i_fd.c ft_putendl_i.c \
 			ft_putendl.c ft_putnbr.c ft_putstr.c ft_putstr_fd.c ft_strcat.c \
-			ft_strchr.c ft_strlen.c ft_rand.c ft_putnbr_fd.c \
+			ft_strchr.c ft_strlen.c ft_rand.c ft_putnbr_fd.c ft_atoi_base.c\
 			ft_strcat.c ft_strchr.c ft_strclr.c ft_strcmp.c ft_strcpy.c \
 			ft_strdel.c ft_strdup.c ft_strequ.c ft_striter.c ft_striteri.c \
 			ft_strjoin.c ft_strlcat.c ft_strlen.c ft_strmap.c ft_strmapi.c \
 			ft_strncat.c ft_strncmp.c ft_strncpy.c ft_strnequ.c ft_strnew.c \
 			ft_strnstr.c ft_strrchr.c ft_strsplit.c ft_strstr.c ft_strsub.c \
 			ft_strtrim.c ft_strtrimcpy.c ft_tolower.c ft_toupper.c \
-			ft_wordcount.c get_next_line.c
+			ft_wordcount.c get_next_line.c ft_ishex.c
 
 SRCS = $(addprefix $(DIR_S)/,$(SOURCES))
 OBJECTS = $(addprefix $(DIR_O)/,$(SOURCES:.c=.o))
