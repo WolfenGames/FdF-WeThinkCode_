@@ -12,12 +12,6 @@
 
 #include "../includes/fdf.h"
 
-int			get_color_value(const char *s)
-{
-	(void)s;
-	return (0xffffff);
-}
-
 t_points	new_point(int x, char *y, int z, t_map *m)
 {
 	t_points	p;
@@ -32,7 +26,10 @@ t_points	new_point(int x, char *y, int z, t_map *m)
 		p.c = ft_atoi_base(found + 1, 16);
 	}
 	else
+	if (p.y < 9)
 		p.c = (p.y > 1) ? 0xFF00FF : 0xFFFF00;
+	else
+		p.c = (p.y > 9) ? 0x00FF00 : 0x0000FF;
 	return (p);
 }
 
