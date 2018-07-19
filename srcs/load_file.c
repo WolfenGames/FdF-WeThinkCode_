@@ -73,7 +73,6 @@ void		load_file(char *f, t_map *m)
 	}
 	close(fd);
 	m->w = count(m->m[0]);
-//	error_load(m);
 	if (m->h < 1 && m->w < 1)
 		exit(4);
 	ft_putendl("Successful load of Jumanji");
