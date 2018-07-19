@@ -51,6 +51,26 @@ int			count(const char *s)
 	return (c);
 }
 
+void		check_line(const char *str)
+{
+	int		i;
+	char	**sp;
+
+	i = 0;
+	sp = ft_strsplit(str, ' ');
+	if (!sp[0])
+	{
+		ft_putendl(ESCAPE_YODA);
+		exit(13);
+	}
+	while (sp[i])
+	{
+		free(sp[i]);
+		i++;
+	}
+	free(sp);
+}
+
 void		load_file(char *f, t_map *m)
 {
 	char	*dat;
@@ -68,12 +88,15 @@ void		load_file(char *f, t_map *m)
 	while (i < m->h)
 	{
 		get_next_line(fd, &dat);
+		check_line(dat);
 		m->m[i++] = dat;
 		dat = NULL;
 	}
 	close(fd);
 	m->w = count(m->m[0]);
+	error_load(m);
 	if (m->h < 1 && m->w < 1)
 		exit(4);
 	ft_putendl("Successful load of Jumanji");
+	ft_putendl("Side note, program accounts for certain abormalities");
 }
