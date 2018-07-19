@@ -12,91 +12,79 @@
 
 #include "../includes/fdf.h"
 
-static int  get_lc(char *f)
+static int	get_lc(char *f)
 {
-    int     fd;
-    int     l;
-    char    *dat;
+	int		fd;
+	int		l;
+	char	*dat;
 
-    l = 0;
-    if (!(fd = open(f, O_RDONLY)))
-    {
-        ft_putendl(ESCAPE_YODA);
-        exit(2);
-    }
-    while (get_next_line(fd, &dat) > 0)
-    {
-        l++;
-        free(dat);
-    }
-    if (dat)
-        free(dat);
-    close(fd);
-    return (l);
+	l = 0;
+	if (!(fd = open(f, O_RDONLY)))
+	{
+		ft_putendl(ESCAPE_YODA);
+		exit(2);
+	}
+	while (get_next_line(fd, &dat) > 0)
+	{
+		l++;
+		free(dat);
+	}
+	if (dat)
+		free(dat);
+	close(fd);
+	return (l);
 }
 
-int         count(char *s)
+int			count(char *s)
 {
-    int     i;
-    int     c;
+	int		i;
+	int		c;
 
-    i = 0;
-    c = 0;
-    while (s[i] != '\0')
-    {
-        if (ft_isdigit(s[i]) && s[i])
-        {
-            c++;
-            while (ft_isdigit(s[i]) && s[i])
-                i++;
-            if (s[i] == ',' && s[i + 1] && s[i + 2] &&
-                s[i + 1] == '0' && s[i + 2] == 'x')
-            {
-                i += 3;
-                while (ft_ishex(s[i])&& s[i])
-                    i++;
-            }
-        }
-        else
-            i++;
-    }
-    return (c);
+	i = 0;
+	c = 0;
+	while (s[i] != '\0')
+	{
+		if (ft_isdigit(s[i]) && s[i])
+		{
+			c++;
+			while (ft_isdigit(s[i]) && s[i])
+				i++;
+			if (s[i] == ',' && s[i + 1] && s[i + 2] &&
+				s[i + 1] == '0' && s[i + 2] == 'x')
+			{
+				i += 3;
+				while (ft_ishex(s[i]) && s[i])
+					i++;
+			}
+		}
+		else
+			i++;
+	}
+	return (c);
 }
 
-void        load_file_error(const char  *dat, const int i)
+void		load_file(char *f, t_map *m)
 {
-    if (ft_strlen(dat) == 0 ||
-        (dat[i] == ' ' && dat[i + 1] == ' '))
-    {
-        ft_putendl(dat);
-        exit(8);
-    }
-}
+	char	*dat;
+	int		fd;
+	int		i;
 
-void        load_file(char *f, t_map *m)
-{
-    char    *dat;
-    int     fd;
-    int     i;
-
-    i = 0;
-    if (!(fd = open(f, O_RDONLY)))
-    {
-        ft_putendl(ESCAPE_YODA);
-        exit(3);
-    }
-    m->h = get_lc(f);
-    m->m = (char **)malloc(sizeof(char *) * m->h);
-    while (i < m->h)
-    {
-        get_next_line(fd, &dat);
-        m->m[i++] = dat;
-        dat = NULL;
-    }
-    close(fd);
-    m->w = count(m->m[0]);
-    if (m->h < 1 && m->w < 1)
-        exit(4);
-    if (count(m->m[0]) != count(m->m[1]))
-        exit(5);
+	i = 0;
+	if (!(fd = open(f, O_RDONLY)))
+	{
+		ft_putendl(ESCAPE_YODA);
+		exit(3);
+	}
+	m->h = get_lc(f);
+	m->m = (char **)malloc(sizeof(char *) * m->h);
+	while (i < m->h)
+	{
+		get_next_line(fd, &dat);
+		m->m[i++] = dat;
+		dat = NULL;
+	}
+	close(fd);
+	m->w = count(m->m[0]);
+	if (m->h < 1 && m->w < 1)
+		exit(4);
 }

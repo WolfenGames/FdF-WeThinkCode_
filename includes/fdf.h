@@ -41,7 +41,7 @@
 # define NUM_8			91
 
 # define ESCAPE_YODA	"Hmmm... Fucked up you did"
-
+# define LE_OF(A, B) 	(A < B ? A : B)
 # define CON_ONE		keycode == NUM_1 || keycode == NUM_2 || keycode == NUM_3
 # define CON_TWO		keycode == NUM_4 || keycode == NUM_6
 # define CON_THREE		keycode == NUM_7 || keycode == NUM_8 || keycode == NUM_9
@@ -117,5 +117,5 @@ int					exit_hook(int keycode, t_map *m);
 
 int					draw(t_map *m);
 int					get_color(t_map *m, double y);
-int     			rot(int keycode, t_map *m);
+int					rot(int keycode, t_map *m);
 #endif

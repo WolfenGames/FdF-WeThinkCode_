@@ -36,10 +36,10 @@ static size_t	ft_calculate(const char *str, int i)
 
 int				ft_atoi_base(const char *str, int base)
 {
-	size_t	i;
-	int		num;
-	t_bool	neg;
-	size_t	b;
+	size_t		i;
+	int			num;
+	t_bool		neg;
+	size_t		b;
 	const char	*ref = "0123456789ABCDEF";
 
 	b = 0;

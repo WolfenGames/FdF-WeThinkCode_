@@ -19,28 +19,26 @@ void	set_hooks(t_map *m)
 	mlx_hook(m->win, 17, 0, exit_hook, m);
 }
 
-# define LE_OF(A, B) (A < B ? A : B)
-
-void    window_init(char *m_n)
+void	window_init(char *m_n)
 {
-    t_map   *m;
+	t_map	*m;
 
-    m = (t_map *)malloc(sizeof(t_map));
-    m->wi.wn = "Fdf - Win";
-    m->wi.c_h = DEF_H;
-    m->wi.c_w = DEF_W;
-    m->mlx = mlx_init();
-    m->win = mlx_new_window(m->mlx, m->wi.c_w, m->wi.c_h, m->wi.wn);
-    load_file(m_n, m);
-    m->r_x = 0;
-    m->r_y = 0;
-    m->r_z = 0;
-    mapify(m, &m->pnts);
-    m->scl = LE_OF((m->wi.c_w / m->w), (m->wi.c_h / m->h));
-    m->mv_x = (m->wi.c_w / 2);
-    m->mv_y = (m->wi.c_h / 2);
-    rotate(m);
-    draw(m);
-    set_hooks(m);
-    mlx_loop(m->mlx);
+	m = (t_map *)malloc(sizeof(t_map));
+	m->wi.wn = "Fdf - Win";
+	m->wi.c_h = DEF_H;
+	m->wi.c_w = DEF_W;
+	m->mlx = mlx_init();
+	m->win = mlx_new_window(m->mlx, m->wi.c_w, m->wi.c_h, m->wi.wn);
+	load_file(m_n, m);
+	m->r_x = -10;
+	m->r_y = 10;
+	m->r_z = 10;
+	mapify(m, &m->pnts);
+	m->scl = LE_OF((m->wi.c_w / m->w), (m->wi.c_h / m->h)) * 0.5f;
+	m->mv_x = (m->wi.c_w / 2);
+	m->mv_y = (m->wi.c_h / 2);
+	rotate(m);
+	draw(m);
+	set_hooks(m);
+	mlx_loop(m->mlx);
 }

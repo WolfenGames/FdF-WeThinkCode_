@@ -12,13 +12,13 @@
 
 #include "../includes/fdf.h"
 
-int     main(int ac, char **av)
+int		main(int ac, char **av)
 {
-    if (ac == 2)
-    {
-        if (ft_strequ(ft_strchr(av[1], '.'), ".fdf") == 0)
-            exit(3);
-        window_init(av[1]);
-    }
-    return (0);
+	if (ac == 2)
+	{
+		if (ft_strequ(ft_strchr(av[1], '.'), ".fdf") == 0)
+			exit(3);
+		window_init(av[1]);
+	}
+	return (0);
 }

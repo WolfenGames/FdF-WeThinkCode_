@@ -12,74 +12,74 @@
 
 #include "../includes/fdf.h"
 
-void    rot_x(float angle, t_map *map)
+void		rot_x(float angle, t_map *m)
 {
-    int     i;
-    int     j;
-    float   y1;
-    float   z1;
+	int		i;
+	int		j;
+	float	y1;
+	float	z1;
 
-    i = 0;
-    angle = angle * (M_PI / 180);
-    while (i < map->h)
-    {
-        j = 0;
-        while (j < map->w)
-        {
-            y1 = map->pnts[i][j].y * cos(angle) - map->pnts[i][j].z * sin(angle);
-            z1 = map->pnts[i][j].z * cos(angle) + map->pnts[i][j].y * sin(angle);
-            map->pnts[i][j].z = z1;
-            map->pnts[i][j].y = y1;
-            j++;
-        }
-        i++;
-    }
+	i = 0;
+	angle = angle * (M_PI / 180);
+	while (i < m->h)
+	{
+		j = 0;
+		while (j < m->w)
+		{
+			y1 = m->pnts[i][j].y * cos(angle) - m->pnts[i][j].z * sin(angle);
+			z1 = m->pnts[i][j].z * cos(angle) + m->pnts[i][j].y * sin(angle);
+			m->pnts[i][j].z = z1;
+			m->pnts[i][j].y = y1;
+			j++;
+		}
+		i++;
+	}
 }
 
-void    rot_y(float angle, t_map *map)
+void		rot_y(float angle, t_map *m)
 {
-    int     i;
-    int     j;
-    float   x1;
-    float   z1;
+	int		i;
+	int		j;
+	float	x1;
+	float	z1;
 
-    i = 0;
-    angle *= M_PI / 180;
-    while (i < map->h)
-    {
-        j = 0;
-        while (j < map->w)
-        {
-            x1 = map->pnts[i][j].x * cos(angle) + map->pnts[i][j].z * sin(angle);
-            z1 = map->pnts[i][j].z * cos(angle) - map->pnts[i][j].x * sin(angle);
-            map->pnts[i][j].z = z1;
-            map->pnts[i][j].x = x1;
-            j++;
-        }
-        i++;
-    }
+	i = 0;
+	angle *= M_PI / 180;
+	while (i < m->h)
+	{
+		j = 0;
+		while (j < m->w)
+		{
+			x1 = m->pnts[i][j].x * cos(angle) + m->pnts[i][j].z * sin(angle);
+			z1 = m->pnts[i][j].z * cos(angle) - m->pnts[i][j].x * sin(angle);
+			m->pnts[i][j].z = z1;
+			m->pnts[i][j].x = x1;
+			j++;
+		}
+		i++;
+	}
 }
 
-void    rot_z(float angle, t_map *map)
+void		rot_z(float angle, t_map *m)
 {
-    int     i;
-    int     j;
-    float   x1;
-    float   y1;
+	int		i;
+	int		j;
+	float	x1;
+	float	y1;
 
-    i = 0;
-    angle = angle * (M_PI / 180);
-    while (i < map->h)
-    {
-        j = 0;
-        while (j < map->w)
-        {
-            x1 = map->pnts[i][j].x * cos(angle) - map->pnts[i][j].y * sin(angle);
-            y1 = map->pnts[i][j].x * sin(angle) + map->pnts[i][j].y * cos(angle);
-            map->pnts[i][j].x = x1;
-            map->pnts[i][j].y = y1;
-            j++;
-        }
-        i++;
-    }
+	i = 0;
+	angle = angle * (M_PI / 180);
+	while (i < m->h)
+	{
+		j = 0;
+		while (j < m->w)
+		{
+			x1 = m->pnts[i][j].x * cos(angle) - m->pnts[i][j].y * sin(angle);
+			y1 = m->pnts[i][j].x * sin(angle) + m->pnts[i][j].y * cos(angle);
+			m->pnts[i][j].x = x1;
+			m->pnts[i][j].y = y1;
+			j++;
+		}
+		i++;
+	}
 }

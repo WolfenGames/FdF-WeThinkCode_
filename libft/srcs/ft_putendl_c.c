@@ -15,7 +15,7 @@
 void	ft_putendl_c(char const *dest, char const *str)
 {
 	char	*temp;
-	
+
 	temp = NULL;
 	if (dest && str)
 	{
