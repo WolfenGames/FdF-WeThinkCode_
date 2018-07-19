@@ -35,31 +35,19 @@ static int	get_lc(char *f)
 	return (l);
 }
 
-int			count(char *s)
+int			count(const char *s)
 {
-	int		i;
 	int		c;
+	char	**sp;
 
-	i = 0;
+	sp = ft_strsplit(s, ' ');
 	c = 0;
-	while (s[i] != '\0')
+	while (sp[c])
 	{
-		if (ft_isdigit(s[i]) && s[i])
-		{
-			c++;
-			while (ft_isdigit(s[i]) && s[i])
-				i++;
-			if (s[i] == ',' && s[i + 1] && s[i + 2] &&
-				s[i + 1] == '0' && s[i + 2] == 'x')
-			{
-				i += 3;
-				while (ft_ishex(s[i]) && s[i])
-					i++;
-			}
-		}
-		else
-			i++;
+		free(sp[c]);
+		c++;
 	}
+	free(sp);
 	return (c);
 }
 
@@ -70,7 +58,7 @@ void		load_file(char *f, t_map *m)
 	int		i;
 
 	i = 0;
-	if (!(fd = open(f, O_RDONLY)))
+	if ((fd = open(f, O_RDONLY)) < 0)
 	{
 		ft_putendl(ESCAPE_YODA);
 		exit(3);
@@ -85,6 +73,8 @@ void		load_file(char *f, t_map *m)
 	}
 	close(fd);
 	m->w = count(m->m[0]);
+	error_load(m);
 	if (m->h < 1 && m->w < 1)
 		exit(4);
+	ft_putendl("Successful load of Jumanji");
 }

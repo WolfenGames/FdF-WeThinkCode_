@@ -12,7 +12,7 @@
 
 NAME = fdf
 
-FILE = maps/good/42.fdf
+FILE = maps/good/t1.fdf
 
 CFLAGS += -Wextra -Wall -I./includes
 
@@ -28,7 +28,7 @@ DIR_S = srcs
 DIR_O = obj
 
 SOURCES = draw.c keyhandle.c load_file.c main.c window.c map.c \
-			rotate.c
+			rotate.c error.c
 
 SRCS = $(addprefix $(DIR_S)/,$(SOURCES))
 OBJECTS = $(addprefix $(DIR_O)/,$(SOURCES:.c=.o))

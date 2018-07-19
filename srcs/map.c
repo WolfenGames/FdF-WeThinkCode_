@@ -30,6 +30,7 @@ t_points	new_point(int x, char *y, int z, t_map *m)
 	if (found)
 	{
 		p.c = ft_atoi_base(found + 1, 16);
+		printf("%d", p.c);
 	}
 	else
 		p.c = (p.y > 1) ? 0xFF00FF : 0xFFFF00;

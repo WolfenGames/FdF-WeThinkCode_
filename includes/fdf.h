@@ -102,11 +102,13 @@ t_points			**simulacron(t_map *m);
 void				free_points(t_map *m, t_points **p);
 void				mapify(t_map *m, t_points ***p);
 void				rotate(t_map *m);
+void				error_load(t_map *m);
 void				rot_x(float angle, t_map *map);
 void				rot_y(float angle, t_map *map);
 void				rot_z(float angle, t_map *map);
 void				window_init(char *m_n);
 
+int					count(const char *s);
 int					key_press_hook(int keycode, t_map *m);
 int					key_release_hook(int keycode, t_map *m);
 int					mouse_press_hook(int keycode, t_map *m);
