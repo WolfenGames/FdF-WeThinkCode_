@@ -16,7 +16,6 @@ FILE = maps/good/t1.fdf
 
 CFLAGS += -Wextra -Wall -I./includes
 
-#ATTACH = -L libft/ -lft -L mlx_mcos -lmlx -framework OpenGL -framework AppKit
 ATTACH = -L libft/ -lft -lmlx -framework OpenGL -framework AppKit
 
 C = gcc
@@ -60,8 +59,5 @@ fclean: clean
 
 re: fclean clean all
 	@echo "\033[1;31;m[Recompiled]\033[0m"
-
-run: $(NAME)
-	./$(NAME) $(FILE)
 
 .PHONY: fclean clean all re

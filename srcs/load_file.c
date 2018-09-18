@@ -97,6 +97,5 @@ void		load_file(char *f, t_map *m)
 	error_load(m);
 	if (m->h < 1 && m->w < 1)
 		exit(4);
-	ft_putendl("Successful load of Jumanji");
 	ft_putendl("Side note, program accounts for certain abormalities");
 }

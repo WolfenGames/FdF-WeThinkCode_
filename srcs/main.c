@@ -14,14 +14,18 @@
 
 int		main(int ac, char **av)
 {
-	if (ac == 2)
+	if (ac > 1)
 	{
-		if (ft_strequ(ft_strchr(av[1], '.'), ".fdf") == 0)
+		if (ac > 2)
+			ft_putendl("I can only devour one file at the moment, Thank you!");
+		if (ft_strequ(ft_strrchr(av[1], '.'), ".fdf") == 0)
 		{
 			ft_putendl(ESCAPE_YODA);
 			exit(3);
 		}
 		window_init(av[1]);
 	}
+	else
+		ft_putendl("FEED ME FILES!!!!");
 	return (0);
 }

@@ -19,13 +19,6 @@ void	rotate(t_map *m)
 	rot_z(m->r_z, m);
 }
 
-void	reset(t_map *m)
-{
-	m->r_x = 10;
-	m->r_y = 10;
-	m->r_z = 10;
-}
-
 int		rot(int keycode, t_map *m)
 {
 	if (keycode == NUM_1)
@@ -40,10 +33,6 @@ int		rot(int keycode, t_map *m)
 		rot_z(-10, m);
 	if (keycode == NUM_4)
 		rot_z(10, m);
-	if (keycode == PG_UP)
-		m->mv_z++;
-	if (keycode == PG_DOWN)
-		m->mv_z--;
 	return (0);
 }
 

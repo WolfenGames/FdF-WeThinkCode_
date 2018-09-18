@@ -12,8 +12,6 @@
 
 #ifndef FDF_H
 # define FDF_H
-# define MAX_W 1920
-# define MAX_H 1080
 # define DEF_W 1600
 # define DEF_H 900
 
@@ -42,9 +40,6 @@
 
 # define ESCAPE_YODA	"Hmmm... Fucked up you did"
 # define LE_OF(A, B) 	(A < B ? A : B)
-# define CON_ONE		keycode == NUM_1 || keycode == NUM_2 || keycode == NUM_3
-# define CON_TWO		keycode == NUM_4 || keycode == NUM_6
-# define CON_THREE		keycode == NUM_7 || keycode == NUM_8 || keycode == NUM_9
 
 # include <mlx.h>
 # include <math.h>
@@ -57,7 +52,6 @@ typedef struct		s_points
 	float			y;
 	float			z;
 	int				c;
-	t_bool			m;
 }					t_points;
 typedef struct		s_winfo
 {
@@ -77,18 +71,13 @@ typedef struct		s_map
 	int				endn;
 	int				m_y;
 	int				m_x;
-	int				m_z;
-	int				max_y;
 	float			mv_x;
 	float			mv_y;
-	float			mv_z;
 	int				w;
 	int				h;
-	int				pix;
 	float			r_x;
 	float			r_y;
 	float			r_z;
-	float			ang;
 	float			scl;
 	t_points		**pnts;
 	t_winfo			wi;
@@ -97,9 +86,7 @@ typedef struct		s_map
 void				load_file(char *f, t_map *m);
 
 t_points			new_point(int x, char *y, int z, t_map *m);
-t_points			**simulacron(t_map *m);
 
-void				free_points(t_map *m, t_points **p);
 void				mapify(t_map *m, t_points ***p);
 void				rotate(t_map *m);
 void				error_load(t_map *m);
@@ -109,15 +96,7 @@ void				rot_z(float angle, t_map *map);
 void				window_init(char *m_n);
 
 int					count(const char *s);
-int					key_press_hook(int keycode, t_map *m);
-int					key_release_hook(int keycode, t_map *m);
-int					mouse_press_hook(int keycode, t_map *m);
-int					mouse_release_hook(int keycode, t_map *m);
-int					motion_hook(int keycode, t_map *m);
-int					expose_hook(int keycode, t_map *m);
-int					exit_hook(int keycode, t_map *m);
-
 int					draw(t_map *m);
-int					get_color(t_map *m, double y);
-int					rot(int keycode, t_map *m);
+int					key_press_hook(int keycode, t_map *m);
+int					exit_hook(int keycode, t_map *m);
 #endif

@@ -43,17 +43,10 @@ t_points	new_point(int x, char *y, int z, t_map *m)
 	return (p);
 }
 
-void		free_points(t_map *m, t_points **p)
+void		escape_mapify(void)
 {
-	long int	i;
-
-	i = -1;
-	while (++i < m->h)
-	{
-		free(p[i]);
-	}
-	free(p);
-	p = NULL;
+	ft_putendl(ESCAPE_YODA);
+	exit(11);
 }
 
 void		mapify(t_map *m, t_points ***p)
@@ -73,10 +66,7 @@ void		mapify(t_map *m, t_points ***p)
 		while (y < m->w)
 		{
 			if (ft_strlen(sp[y]) == 0)
-			{
-				ft_putendl(ESCAPE_YODA);
-				exit(11);
-			}
+				escape_mapify();
 			np[x][y] = new_point(x, sp[y], y, m);
 			free(sp[y]);
 			y++;

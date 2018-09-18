@@ -44,9 +44,7 @@ void	put_pixel(float x, float y, int col, t_map *m)
 	x += m->mv_x;
 	y += m->mv_y;
 	if (x > 0 && x < m->wi.c_w && y > 0 && y < m->wi.c_h)
-	{
 		*(unsigned int *)(m->dat + ((int)x * m->bpp) + ((int)y * m->sl)) = col;
-	}
 }
 
 void	line(t_points p1, t_points p2, t_map *m)
